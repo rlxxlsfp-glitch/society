@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="통합사회B">
+<meta name="theme-color" content="#1F2A44">
+<title>통합사회B</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📒</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA; --ink:#1F2A44; --sub:#5B6478; --line:#D9DCE3;
+  --hl:#FFEE58; --red:#E0362C; --pen:#2B5BD7; --ok:#1E8E5A; --soft:#EEF1F6;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15181F; --ink:#E6E9F0; --sub:#9AA3B5; --line:#2D3340;
+    --hl:#6B5F00; --red:#FF6B5E; --pen:#7FA4FF; --ok:#4CC38A; --soft:#1E222B;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15181F; --ink:#E6E9F0; --sub:#9AA3B5; --line:#2D3340;
+  --hl:#6B5F00; --red:#FF6B5E; --pen:#7FA4FF; --ok:#4CC38A; --soft:#1E222B;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:16px;line-height:1.7;word-break:keep-all;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px 110px}
+header{padding:22px 0 10px}
+header h1{font-size:30px;line-height:1.2;margin:0;font-weight:700;letter-spacing:-.02em}
+header p{margin:4px 0 0;color:var(--sub);font-size:14px}
+
+/* tabs */
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);
+  display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav button{flex:1;max-width:240px;background:none;border:0;padding:12px 0 14px;font:inherit;font-size:15px;
+  color:var(--sub);cursor:pointer;position:relative}
+nav button.on{color:var(--ink);font-weight:700}
+nav button.on::after{content:"";position:absolute;left:30%;right:30%;top:0;height:3px;background:var(--ink);border-radius:0 0 3px 3px}
+nav button:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
+.view{display:none}.view.on{display:block}
+
+/* concept */
+.toolbar{display:flex;gap:8px;align-items:center;margin:8px 0 18px;flex-wrap:wrap}
+.toggle{border:1.5px solid var(--ink);background:none;color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.toggle.on{background:var(--ink);color:var(--paper)}
+.legend{font-size:13px;color:var(--sub)}
+h2{font-size:21px;margin:34px 0 10px;line-height:1.35}
+h3{font-size:17px;margin:22px 0 6px}
+.hl{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);padding:0 2px;border-radius:2px}
+.ul{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+.star{color:var(--red);font-weight:700}
+.imp{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:0 7px;border-radius:4px;vertical-align:3px;margin-left:6px;line-height:1.7}
+.ans{font-family:"Gaegu",cursive;color:var(--pen);font-size:1.15em;padding:0 3px}
+.num{font-weight:700;color:var(--pen)}
+.def{border-left:3px solid var(--ink);padding:2px 0 2px 12px;margin:8px 0}
+.row{display:grid;grid-template-columns:92px 1fr;border-top:1px solid var(--line);padding:9px 0;gap:10px}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row b{font-size:15px}
+.row ol{margin:0;padding-left:18px}.row li{margin:2px 0}
+.src{background:var(--soft);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:14.5px}
+.src .t{font-weight:700;margin-bottom:4px;display:block}
+.src p{margin:4px 0}
+.foot{font-size:13.5px;color:var(--sub);border-top:1px dashed var(--line);margin-top:14px;padding-top:8px}
+.foot p{margin:2px 0}
+.note{font-size:14px;color:var(--red);margin:4px 0}
+.mod{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
+.mod h3{margin:0 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+.mod .k{font-size:12px;color:var(--sub);font-weight:500;display:block;margin-top:8px}
+.mod p{margin:0}
+/* blank mode */
+body.blank .hl,body.blank .ans{color:transparent;background:var(--soft);border-bottom:2px solid var(--sub);cursor:pointer;border-radius:3px;
+  -webkit-user-select:none;user-select:none}
+body.blank .hl.show,body.blank .ans.show{color:inherit;background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);border-bottom-color:transparent}
+body.blank .ans.show{color:var(--pen)}
+
+/* quiz */
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.levels button{border:1.5px solid var(--line);background:none;color:var(--ink);border-radius:12px;padding:12px 4px;font:inherit;cursor:pointer;line-height:1.3}
+.levels button b{display:block;font-size:20px}
+.levels button span{font-size:12px;color:var(--sub)}
+.levels button.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.levels button.on span{color:var(--paper);opacity:.75}
+.bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--sub)}
+.qcard{margin-top:16px}
+.lv{display:inline-block;font-size:12px;font-weight:700;border-radius:4px;padding:0 7px;margin-right:6px;vertical-align:2px}
+.lv.하{background:#DDF3E6;color:#14653F}.lv.중{background:#DCE6FB;color:#1F4BB0}.lv.상{background:#FBDCDA;color:#A5231B}
+.q{font-size:17px;font-weight:500;margin:6px 0 10px}
+.box{border:1.5px dashed var(--sub);border-radius:8px;padding:10px 12px;font-size:14.5px;margin:10px 0}
+.box p{margin:3px 0}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choices button{text-align:left;border:1.5px solid var(--line);background:none;color:var(--ink);border-radius:10px;padding:11px 13px;font:inherit;font-size:15px;cursor:pointer;line-height:1.5}
+.choices button.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.choices button.no{border-color:var(--red);background:color-mix(in srgb,var(--red) 10%,transparent)}
+.ox{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ox button{font-size:30px;font-weight:700;padding:14px 0;text-align:center}
+.short{display:flex;gap:8px}
+.short input{flex:1;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:none;color:var(--ink);min-width:0}
+.btn{border:0;background:var(--ink);color:var(--paper);border-radius:10px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer}
+.btn.ghost{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+.res{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--soft);font-size:15px}
+.res b.o{color:var(--ok)}.res b.x{color:var(--red)}
+.nextrow{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.end{text-align:center;padding:30px 0}
+.end .big{font-size:48px;font-weight:700;line-height:1.1}
+.wlist{margin-top:12px}
+.witem{border-top:1px solid var(--line);padding:12px 0}
+.witem .q{font-size:15.5px;margin:4px 0}
+.witem .a{font-size:14px;color:var(--sub)}
+.empty{color:var(--sub);text-align:center;padding:40px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>통합사회B</h1>
+  <p>Ⅰ. 인권 보장과 헌법 / 01. 인권의 의미와 현대 사회의 인권</p>
+</header>
+
+<!-- ===================== 개념 ===================== -->
+<section id="v-concept" class="view on">
+<div class="toolbar">
+  <button class="toggle" id="blankBtn" aria-pressed="false">형광펜 가리기</button>
+  <span class="legend"><span class="hl">형광펜</span> <span class="ul">밑줄</span> <span class="star">★</span> <span class="ans">손필기</span></span>
+</div>
+
+<h2>[1] 인권의 의미와 변화 양상</h2>
+<h3>1. <span class="hl">인권</span></h3>
+<div class="def"><b>의미</b> — <span class="hl">인간의 존엄과 가치를 유지</span>하며 살아갈 수 있도록 <span class="hl">모든 사람</span>이 누려야 할 <span class="hl">기본적인 권리</span></div>
+<div class="rows">
+  <div class="row"><b class="hl">보편성</b><div>인종, 성별, 사회적 신분 등에 관계없이 <span class="hl">인류 구성원 모두가 가지는 권리</span></div></div>
+  <div class="row"><b class="hl">천부성</b><div><span class="hl">태어나면서부터 자연적으로 당연히</span> 가지는 권리</div></div>
+  <div class="row"><b class="hl">불가침성</b><div>타인이 부당하게 <span class="hl">침해할 수도, 양도할 수도 없는</span> 권리</div></div>
+  <div class="row"><b class="hl">항구성</b><div>일정 기간에만 보장받는 것이 아니라 <span class="hl">영원히 보장</span>되는 권리</div></div>
+</div>
+<div class="src"><span class="t">자료[1] 인권의 특징</span>
+<p>(<span class="num">①</span> <span class="ans">보편성</span>) 인간이라면 누구나 누릴 수 있다.</p>
+<p>(<span class="num">②</span> <span class="ans">항구성</span>) 일정 기간에만 한정되는 것이 아니라 영구히 보장된다.</p>
+<p>(<span class="num">③</span> <span class="ans">천부성</span>) 태어나면서부터 자연스럽게 가진다.</p>
+<p>(<span class="num">④</span> <span class="ans">불가침성</span>) 국가나 다른 사람이 침해해서는 안 된다.</p>
+</div>
+
+<h2>2. (<span class="hl">1세대 인권</span>) <span class="hl">자유권, 평등권, 참정권</span>의 강조<span class="imp">중요</span></h2>
+<h3>(1) <span class="hl">시민 혁명</span></h3>
+<p>영국 명예혁명(1688), 미국 독립 혁명(1776), 프랑스 혁명(1789) → <span class="hl">자유권, 평등권</span></p>
+<div class="row"><b>배경</b><ol>
+<li><span class="hl">왕과 귀족에게 부당하게 억압</span>받던 대다수 사람이 <span class="hl">사회의 불평등과 비인간성에 저항</span></li>
+<li>계몽사상¹⁾, 사회 계약설²⁾, 천부 인권³⁾ 사상 확산</li>
+<li>상공업 발달 과정에서 성장한 <span class="hl">시민 계급이 시민 혁명 주도</span></li></ol></div>
+<div class="row"><b class="hl">영국<br>명예혁명</b><ol>
+<li><span class="hl">의회가 왕을 폐하고</span> 윌리엄 3세와 메리 2세를 공동 통치 형태의 왕으로 추대한 사건</li>
+<li><span class="hl">유혈 사태 없었으며</span>, <span class="hl">윌리엄 3세와 메리 2세</span>는 1689년 <span class="hl">의회가 제정한 권리 장전을 승인</span>하고 <span class="hl">왕위에 오름</span></li>
+<li>(<span class="num">⑤</span> <span class="ans">권리 장전</span>) → <span class="hl">왕권 제한, 의회 권한 강조</span></li></ol></div>
+<div class="row"><b class="hl">미국<br>독립 혁명</b><ol>
+<li>미국이 <span class="hl">영국으로부터 독립한 사건</span></li>
+<li>13개 식민주 대표들이 모여 <span class="hl">토머스 제퍼슨</span>이 기초한 <span class="hl">독립 선언문을 채택하고 공포</span></li>
+<li>(<span class="num">⑥</span> <span class="ans">미국 독립 선언문</span>) → <span class="hl">국민주권, 천부 인권, 저항권 규정</span></li></ol></div>
+<div class="row"><b>프랑스<br>혁명</b><ol>
+<li>구제도의 모순으로 인해 국가 재정의 대부분을 부담하였지만 참정권이 없었던 <span class="hl">제3신분(평민)의 불만이 폭발</span></li>
+<li><span class="hl">바스티유 감옥이 함락</span>된 후 <span class="hl">프랑스 국민 의회</span>가 <span class="hl">인권 선언을 공포</span></li>
+<li>(<span class="num">⑦</span> <span class="ans">인간과 시민의 권리 선언</span>) → <span class="hl">재산권, 자유권, 평등권 규정</span></li></ol></div>
+
+<div class="src"><span class="t">자료[2] 권리 장전 (영국 명예 혁명)</span>
+<p>1. <span class="hl">의회의 동의 없이</span> 자의적으로 법률 및 법률 집행을 정지하는 권한은 <span class="hl">위법이다.</span></p>
+<p>4. 국왕의 대권을 구실로 <span class="hl">의회의 승인 없이</span> … 국왕이 쓰기 위한 금전을 징수하는 것은 <span class="hl">위법이다.</span></p>
+</div>
+<div class="src"><span class="t">자료[3] 인간과 시민의 권리 선언 (프랑스 혁명)</span>
+<p>제1조 인간은 <span class="hl">태어나면서부터</span> 자유로우며 평등한 권리를 가진다. → <span class="num">⑧</span> <span class="ans">천부 인권, 자유권, 평등권</span></p>
+<p>제2조 모든 <span class="hl">정치적 결사</span>의 목적은 자유, 재산, 안전, 압제에의 저항 등 인간의 소멸될 수 없는 권리를 보전함에 있다. → <span class="num">⑨</span> <span class="ans">정치적 표현의 자유</span></p>
+<p>제3조 <span class="hl">모든 주권의 원리</span>는 본질적으로 <span class="hl">국민</span>에게 있다. → <span class="num">⑩</span> <span class="ans">국민 주권주의</span></p>
+<p>제17조 <span class="hl">소유권은 신성불가침의 권리</span>이므로, 법에서 규정한 공공의 필요에 의해 명백히 요구되는 때 이외에는 누구도 박탈당할 수 없다. → <span class="num">⑪</span> <span class="ans">소유권 불가침 원리(재산권, 사유 재산제)</span></p>
+</div>
+
+<h3>(2) 참정권 확대 운동</h3>
+<p>차티스트 운동(1838), 여성 참정권 운동(1850년대~)</p>
+<div class="row"><b>배경</b><ol>
+<li>시민 혁명 이후에도 <span class="hl">재산, 성별, 인종 등에 따라 참정권 제한</span></li>
+<li>(<span class="num">⑫</span> <span class="ans">일정 수준 이상의 재산이 있는 성인 남성</span>)만 <span class="hl">투표권 보장</span></li>
+<li>국가 의사 결정에서 배제된 노동자, 농민, 여성 등을 중심으로 참정권 확대 운동 전개</li></ol></div>
+<div class="row"><b class="hl">차티스트<br>운동</b><ol>
+<li><span class="hl ul">영국 노동자들</span> 중심으로 <span class="hl">인민 헌장</span>을 통해 보통 선거⁴⁾와 <span class="hl">비밀 투표</span>를 요구</li>
+<li>(<span class="num">⑬</span> <span class="ans">21세 이상의 남자 전체</span>)에 의한 보통 선거 요구</li></ol></div>
+<div class="row"><b class="hl">여성<br>참정권 운동</b><ol>
+<li>영국, 오스트레일리아 등 참정권이 없던 여성들 중심으로 청원, 시위를 통해 전개</li>
+<li><span class="hl">여성을 포함한 보통 선거 요구</span></li></ol></div>
+<div class="row"><b>결과</b><ol>
+<li>투표권자의 범위가 점차 늘어나며 <span class="hl">1918년에는 30세 이상 여성에게도 선거권을 인정</span></li>
+<li>1928년부터 <span class="hl">여성에게 남성과 동등한 참정권이 인정</span></li></ol></div>
+<p class="note">✎ 필기 화살표: ⑫ 재산 있는 성인 남성 → ⑬ 21세 이상 남자 전체 → 1918년 30세 이상 여성 → 1928년 남녀 동등 (선거권이 점점 넓어지는 흐름)</p>
+
+<div class="src"><span class="t"><span class="star">★</span> 자료[4] 영국 노동자들의 인민 헌장 (차티스트 운동, 1838)</span>
+<p>ㆍ<span class="hl">무기명 투표를 실시</span>할 것 <span class="ans">(비밀)</span></p>
+<p>ㆍ하원 의원의 재산 자격 제도를 폐지할 것</p>
+<p><span class="star">★</span> <span class="hl">21세 이상의 남자 전체에 의한 보통 선거를 실시</span>할 것</p>
+</div>
+<div class="foot">
+<p>1) 계몽사상: 인간의 이성으로 사회적 모순과 부조리를 바로잡을 수 있다고 보는 사상</p>
+<p>2) 사회 계약설: 자유롭고 평등한 시민 간의 계약을 바탕으로 국가 권력이 형성되었다고 보는 사상</p>
+<p>3) 천부 인권: 하늘이 부여한 인권을 가지고 태어났다고 보는 사상</p>
+<p>4) 보통 선거: 일정 연령 이상의 모든 사람이 투표에 참여할 수 있는 권리</p>
+</div>
+
+<h2>3. (<span class="hl">2세대 인권</span>) <span class="hl">사회권의 등장</span><span class="imp">중요</span></h2>
+<div class="row"><b>배경</b><ol>
+<li><span class="hl ul">산업 혁명 이후</span> 노동자들의 열악한 근로 조건, <span class="hl">빈부 격차 발생</span></li>
+<li>최소한의 인간다운 생활을 하기 위하여 <span class="hl">국가가 국민의 생존을 보장해 줄 것을 요구</span></li></ol></div>
+<div class="row"><b><span class="star">★</span><span class="hl">독일<br>바이마르 헌법</span><br>(1919)</b><ol>
+<li><span class="hl ul">제1차 세계 대전 이후</span> <span class="hl">독일 바이마르 공화국</span>에서 국가가 모든 국민의 <span class="hl">인간다운 생활을 보장</span>한다는 <span class="hl">사회권이 처음으로 명시</span></li>
+<li>국가의 적극적인 역할이 필수적인 것이 됨</li></ol></div>
+<div class="src"><span class="t">자료[5] 독일 바이마르 헌법 (1919)</span>
+<p>제151조 ① 경제생활의 질서는 모든 사람에게 <span class="hl">인간다운 삶을 보장</span>할 것을 목적으로 하는 정의의 원칙에 기초해야 한다.</p>
+<p>제163조 ② 모든 국민에게는 노동할 기회가 주어진다. 적절한 일자리를 얻지 못한 <span class="hl">국민은 필요한 생계비를 지원</span>받을 수 있다.</p>
+</div>
+
+<h2>4. (<span class="hl">3세대 인권</span>) <span class="hl">연대권의 등장</span><span class="imp">중요</span></h2>
+<div class="row"><b>배경</b><ol>
+<li><span class="hl ul">제2차 세계대전 이후</span> 인권 문제 해결을 위한 인류 공동의 노력 필요 공감대 형성</li>
+<li>인종 차별, 국가 간 빈부 격차 등에 관심을 가지며 <span class="hl">국제적 협력 및 연대를 강조</span></li></ol></div>
+<div class="row"><b class="hl">세계 인권 선언<br>(1948)</b><ol>
+<li><span class="hl">국제 연합(UN) 총회</span>에서 세계인권 선언을 채택하여 <span class="hl">인권 보장을 위한 국제 기준 제시</span></li>
+<li>인류 전체의 인권을 인정하는 것이 세계의 자유, 정의, 평화의 기초가 됨을 선언</li></ol></div>
+<div class="row"><b>연대권<br>사례</b><div><span class="hl">자결권</span>⁵⁾, <span class="hl">평화의 권리, 재난으로부터 구제받을 권리, 지속 가능한 환경에 대한 권리</span>, <span class="hl">인종 차별 철폐 협약, 여성 차별 철폐 협약, 아동 권리 협약, 장애인 권리 협약</span> 등</div></div>
+<div class="src"><span class="t">자료[6] 세계 인권 선언 (1948)</span>
+<p><span class="hl">제1조</span> 모든 사람은 <span class="hl">태어날 때부터 자유로우며</span> 그 존엄과 권리에 있어 동등하다. 모든 사람은 천부적으로 이성과 양심을 부여 받았으며, <span class="hl">서로 형제애의 정신으로 행동해야 한다.</span> → <span class="num">⑭</span> <span class="ans">천부 인권, 연대권</span></p>
+<p>제2조 모든 사람에게는 인종, 피부색, 성별, 언어, 종교, 정치적 입장이나 여타의 견해, 국적이나, 사회적 출신, 재산, 출생이나 여타의 신분과 같은 모든 유형의 차별로부터 벗어나서, 이 선언에 규정된 모든 권리와 자유를 누릴 자격이 있다. → 실질적 평등(같은 것은 같게, 다른 것은 다르게)에 근거한 합리적 차별 인정</p>
+<p>제22조 모든 사람에게는 사회의 일원으로서 사회 보장을 요구할 권리가 있다. → 국가의 인권 보장 책임(사회권)</p>
+</div>
+<div class="foot"><p>5) 자결권: 다른 나라의 간섭 없이 자기 민족이나 집단의 일을 자유롭게 결정하고, 고유한 삶의 방식을 누릴 권리</p></div>
+
+<h2>[2] <span class="hl">현대 사회의 인권</span><span class="imp">중요</span></h2>
+<div class="mod"><h3><span class="hl">주거권</span></h3>
+<p><span class="hl">인간다운 주거 생활을 할 권리</span></p>
+<span class="k">등장 배경</span><p>인구의 도시 집중, 주택 부족, 불안정한 주거 생활 증가</p>
+<span class="k">관련 조문</span><p>헌법 제35조 ③ <span class="hl">국가는</span> 주택 개발 정책 등을 통하여 <span class="hl">모든 국민이 쾌적한 주거 생활을 할 수 있도록 노력</span>해야 한다.</p>
+<span class="k">사례</span><p>최저 주거 기준, 주거비 지원, 청년 안심 주택</p></div>
+<div class="mod"><h3><span class="hl">안전권</span></h3>
+<p><span class="hl">각종 위험으로부터 안전을 보호받을 권리</span></p>
+<span class="k">등장 배경</span><p>자연재해, 감염병 대유행, 안전사고</p>
+<span class="k">관련 조문</span><p>헌법 제34조 ⑥ <span class="hl">국가는 재해를 예방하고 그 위험으로부터 국민</span>을 보호하기 위하여 노력해야 한다.</p>
+<span class="k">사례</span><p>지하철 안전문, 재난 및 안전 관리 기본법, 국가의 재해 예방 의무 헌법 명시</p></div>
+<div class="mod"><h3><span class="hl">환경권</span></h3>
+<p><span class="hl">생활에 필요한 모든 조건이 충족된 환경을 누릴 권리</span></p>
+<span class="k">등장 배경</span><p>산업화 및 도시화로 인한 환경 문제, 온실가스로 인한 기후 변화</p>
+<span class="k">관련 조문</span><p>헌법 제35조 ① 모든 국민은 건강하고 <span class="hl">쾌적한 환경에서 생활할 권리</span>를 가지며, <span class="hl">국가와 국민은 환경 보전을 위하여 노력해야 한다.</span></p>
+<span class="k">사례</span><p>미세먼지 경보, 기후변화 협약, 환경 정책 기본법</p></div>
+<div class="mod"><h3><span class="hl">문화권</span></h3>
+<p><span class="hl">공동체의 문화생활에 자유롭게 참여</span>하고 문화적 정체성을 유지할 권리</p>
+<span class="k">등장 배경</span><p>여가 시간 증가로 인한 문화적 요구 증가, 문화 소외 현상 발생</p>
+<span class="k">관련 조문</span><p>문화 기본법 제4조 모든 국민은 성별, 종교…등에 관계없이 <span class="hl">문화 표현과 활동에서 차별을 받지 아니하고</span>…<span class="hl">문화를 향유할 권리</span>를 가진다.</p>
+<span class="k">사례</span><p>문화가 있는 날, 헌법에 전통문화 계승·발전 명시</p></div>
+<div class="mod"><h3><span class="hl">잊힐 권리</span></h3>
+<p><span class="hl">자신에 관한 정보의 삭제 및 확산 방지를 요구</span>할 수 있는 권리</p>
+<span class="k">등장 배경</span><p>정보 사회에서 개인 정보 확산으로 사생활의 비밀 자유 침해 증가</p>
+<span class="k">관련 조문</span><p>헌법 제17조 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다.</p>
+<span class="k">사례</span><p><span class="hl">지우개 서비스</span>, <span class="hl">디지털 장의사</span></p></div>
+</section>
+
+<!-- ===================== 문제 ===================== -->
+<section id="v-quiz" class="view">
+<div id="quizStart">
+  <p style="margin:6px 0 0;color:var(--sub);font-size:14px">단계를 고르면 문제가 섞여서 나와.</p>
+  <div class="levels" id="levels"></div>
+  <button class="btn" id="startBtn" style="width:100%">풀기 시작</button>
+</div>
+<div id="quizRun" hidden></div>
+</section>
+
+<!-- ===================== 오답 ===================== -->
+<section id="v-wrong" class="view">
+<div class="toolbar">
+  <button class="btn" id="wrongRetry">오답만 다시 풀기</button>
+  <button class="btn ghost" id="wrongClear">오답 비우기</button>
+</div>
+<div id="wrongList" class="wlist"></div>
+</section>
+</div>
+
+<nav>
+  <button data-v="concept" class="on">개념</button>
+  <button data-v="quiz">문제</button>
+  <button data-v="wrong">오답</button>
+</nav>
+
+<script>
+/* ---------- 문제 데이터 ---------- */
+// t: mc(객관식) / ox / sa(단답)
+const Q = [
+/* ===== 하 ===== */
+{id:"h1",lv:"하",t:"ox",q:"인권은 일정 기간에만 보장되는 권리이다.",a:"X",ex:"인권은 일정 기간이 아니라 영원히 보장되는 권리 → 항구성"},
+{id:"h2",lv:"하",t:"mc",q:"태어나면서부터 자연적으로 당연히 가지는 권리라는 인권의 특징은?",c:["보편성","천부성","불가침성","항구성"],a:1,ex:"태어나면서부터 자연적으로 당연히 → 천부성"},
+{id:"h3",lv:"하",t:"mc",q:"인종, 성별, 사회적 신분 등에 관계없이 인류 구성원 모두가 가지는 권리라는 특징은?",c:["천부성","항구성","보편성","불가침성"],a:2,ex:"인류 구성원 모두 → 보편성"},
+{id:"h4",lv:"하",t:"sa",q:"타인이 부당하게 침해할 수도, 양도할 수도 없는 권리라는 인권의 특징은?",a:["불가침성"],ex:"침해·양도 불가 → 불가침성"},
+{id:"h5",lv:"하",t:"mc",q:"인권의 의미로 옳은 것은?",c:["국가가 법률로 정해 준 범위 안에서만 누리는 권리","인간의 존엄과 가치를 유지하며 살아갈 수 있도록 모든 사람이 누려야 할 기본적인 권리","시민 계급만 누릴 수 있는 정치적 권리","재산이 있는 사람만 누리는 권리"],a:1,ex:"인권 = 인간의 존엄과 가치를 유지하며 살아갈 수 있도록 모든 사람이 누려야 할 기본적인 권리"},
+{id:"h6",lv:"하",t:"mc",q:"1세대 인권에서 강조된 권리로 옳은 것은?",c:["사회권","연대권","자유권, 평등권, 참정권","환경권, 문화권"],a:2,ex:"1세대 인권 = 자유권, 평등권, 참정권의 강조"},
+{id:"h7",lv:"하",t:"mc",q:"2세대 인권에 해당하는 것은?",c:["사회권","자유권","연대권","잊힐 권리"],a:0,ex:"2세대 인권 = 사회권의 등장"},
+{id:"h8",lv:"하",t:"sa",q:"3세대 인권으로 등장한 권리는 ○○권이다. ○○에 들어갈 말은?",a:["연대","연대권"],ex:"3세대 인권 = 연대권의 등장"},
+{id:"h9",lv:"하",t:"sa",q:"영국 명예혁명 때 1689년 의회가 제정하고 윌리엄 3세와 메리 2세가 승인한 문서는?",a:["권리장전"],ex:"권리 장전 → 왕권 제한, 의회 권한 강조"},
+{id:"h10",lv:"하",t:"mc",q:"미국 독립 선언문을 기초한 사람은?",c:["윌리엄 3세","토머스 제퍼슨","메리 2세","바이마르"],a:1,ex:"13개 식민주 대표들이 토머스 제퍼슨이 기초한 독립 선언문을 채택하고 공포"},
+{id:"h11",lv:"하",t:"ox",q:"프랑스 혁명 때 바스티유 감옥이 함락된 후 프랑스 국민 의회가 인권 선언을 공포하였다.",a:"O",ex:"바스티유 감옥 함락 → 프랑스 국민 의회가 인간과 시민의 권리 선언 공포"},
+{id:"h12",lv:"하",t:"ox",q:"영국 명예혁명은 많은 유혈 사태 속에서 진행되었다.",a:"X",ex:"명예혁명은 유혈 사태가 없었음"},
+{id:"h13",lv:"하",t:"mc",q:"사회권을 처음으로 명시한 헌법은?",c:["권리 장전","미국 독립 선언문","독일 바이마르 헌법","세계 인권 선언"],a:2,ex:"★ 독일 바이마르 헌법(1919)에서 사회권이 처음으로 명시"},
+{id:"h14",lv:"하",t:"mc",q:"세계 인권 선언을 채택한 곳은?",c:["프랑스 국민 의회","영국 의회","독일 바이마르 공화국","국제 연합(UN) 총회"],a:3,ex:"1948년 국제 연합(UN) 총회에서 세계 인권 선언 채택"},
+{id:"h15",lv:"하",t:"sa",q:"차티스트 운동에서 영국 노동자들이 요구 사항을 담아 발표한 문서는?",a:["인민헌장"],ex:"영국 노동자들이 인민 헌장을 통해 보통 선거와 비밀 투표 요구"},
+{id:"h16",lv:"하",t:"ox",q:"1928년부터 영국에서 여성에게 남성과 동등한 참정권이 인정되었다.",a:"O",ex:"1918년 30세 이상 여성 선거권 → 1928년 남성과 동등한 참정권"},
+{id:"h17",lv:"하",t:"mc",q:"자신에 관한 정보의 삭제 및 확산 방지를 요구할 수 있는 권리는?",c:["주거권","잊힐 권리","문화권","안전권"],a:1,ex:"잊힐 권리 — 사례: 지우개 서비스, 디지털 장의사"},
+{id:"h18",lv:"하",t:"mc",q:"‘지하철 안전문’과 관련 깊은 권리는?",c:["환경권","주거권","안전권","문화권"],a:2,ex:"안전권 사례: 지하철 안전문, 재난 및 안전 관리 기본법"},
+{id:"h19",lv:"하",t:"mc",q:"‘청년 안심 주택’과 관련 깊은 권리는?",c:["주거권","잊힐 권리","연대권","환경권"],a:0,ex:"주거권 사례: 최저 주거 기준, 주거비 지원, 청년 안심 주택"},
+{id:"h20",lv:"하",t:"mc",q:"‘미세먼지 경보’와 관련 깊은 권리는?",c:["문화권","환경권","안전권","주거권"],a:1,ex:"환경권 사례: 미세먼지 경보, 기후변화 협약, 환경 정책 기본법"},
+{id:"h21",lv:"하",t:"mc",q:"‘문화가 있는 날’과 관련 깊은 권리는?",c:["잊힐 권리","주거권","문화권","안전권"],a:2,ex:"문화권 사례: 문화가 있는 날, 헌법에 전통문화 계승·발전 명시"},
+{id:"h22",lv:"하",t:"mc",q:"‘디지털 장의사’와 관련 깊은 권리는?",c:["잊힐 권리","환경권","사회권","참정권"],a:0,ex:"잊힐 권리 사례: 지우개 서비스, 디지털 장의사"},
+{id:"h23",lv:"하",t:"ox",q:"시민 혁명은 상공업 발달 과정에서 성장한 시민 계급이 주도하였다.",a:"O",ex:"시민 혁명 배경 ③: 시민 계급이 시민 혁명 주도"},
+{id:"h24",lv:"하",t:"mc",q:"인간의 이성으로 사회적 모순과 부조리를 바로잡을 수 있다고 보는 사상은?",c:["사회 계약설","천부 인권 사상","계몽사상","국민 주권주의"],a:2,ex:"계몽사상 = 인간의 이성으로 사회적 모순과 부조리를 바로잡을 수 있다고 보는 사상"},
+{id:"h25",lv:"하",t:"mc",q:"자유롭고 평등한 시민 간의 계약을 바탕으로 국가 권력이 형성되었다고 보는 사상은?",c:["계몽사상","사회 계약설","천부 인권 사상","연대권"],a:1,ex:"사회 계약설의 의미"},
+{id:"h26",lv:"하",t:"sa",q:"다른 나라의 간섭 없이 자기 민족이나 집단의 일을 자유롭게 결정하고, 고유한 삶의 방식을 누릴 권리는?",a:["자결권"],ex:"자결권 — 연대권의 사례"},
+
+/* ===== 중 ===== */
+{id:"m1",lv:"중",t:"mc",q:"영국 명예혁명에 대한 설명으로 옳은 것은?",c:["13개 식민주 대표들이 독립 선언문을 공포하였다.","의회가 왕을 폐하고 윌리엄 3세와 메리 2세를 공동 통치 형태의 왕으로 추대하였다.","바스티유 감옥 함락이 계기가 되었다.","사회권이 처음으로 명시되었다."],a:1,ex:"①은 미국 독립 혁명, ③은 프랑스 혁명, ④는 바이마르 헌법"},
+{id:"m2",lv:"중",t:"mc",q:"권리 장전이 가져온 결과로 옳은 것은?",c:["국민주권, 저항권 규정","재산권, 자유권, 평등권 규정","왕권 제한, 의회 권한 강조","국가의 적극적 역할 명시"],a:2,ex:"⑤ 권리 장전 → 왕권 제한, 의회 권한 강조"},
+{id:"m3",lv:"중",t:"mc",q:"미국 독립 선언문에 규정된 내용으로 옳은 것은?",c:["국민주권, 천부 인권, 저항권","왕권 제한, 의회 권한 강조","재산권, 자유권, 평등권","사회 보장을 요구할 권리"],a:0,ex:"⑥ 미국 독립 선언문 → 국민주권, 천부 인권, 저항권 규정"},
+{id:"m4",lv:"중",t:"mc",q:"인간과 시민의 권리 선언에 규정된 내용으로 가장 적절한 것은?",c:["국민주권, 천부 인권, 저항권","재산권, 자유권, 평등권","왕권 제한, 의회 권한 강조","보통 선거와 비밀 투표"],a:1,ex:"⑦ 인간과 시민의 권리 선언 → 재산권, 자유권, 평등권 규정"},
+{id:"m5",lv:"중",t:"mc",q:"“모든 주권의 원리는 본질적으로 국민에게 있다.”(인간과 시민의 권리 선언 제3조)가 나타내는 원리는?",c:["소유권 불가침 원리","국민 주권주의","정치적 표현의 자유","천부 인권"],a:1,ex:"⑩ 국민 주권주의"},
+{id:"m6",lv:"중",t:"mc",q:"“소유권은 신성불가침의 권리이므로…누구도 박탈당할 수 없다.”(제17조)가 나타내는 원리는?",c:["국민 주권주의","저항권","소유권 불가침 원리(재산권, 사유 재산제)","연대권"],a:2,ex:"⑪ 소유권 불가침 원리(재산권, 사유 재산제)"},
+{id:"m7",lv:"중",t:"mc",q:"인간과 시민의 권리 선언 제2조 ‘모든 정치적 결사의 목적은…’과 관련된 것은?",c:["정치적 표현의 자유","사회권","국민 주권주의","항구성"],a:0,ex:"⑨ 정치적 표현의 자유"},
+{id:"m8",lv:"중",t:"mc",q:"시민 혁명 이후에도 투표권이 보장되었던 사람은?",c:["21세 이상 남자 전체","30세 이상 여성","일정 수준 이상의 재산이 있는 성인 남성","노동자와 농민"],a:2,ex:"⑫ 일정 수준 이상의 재산이 있는 성인 남성만 투표권 보장 → 참정권 확대 운동의 배경"},
+{id:"m9",lv:"중",t:"mc",q:"인민 헌장(차티스트 운동)의 요구 사항이 아닌 것은?",c:["무기명 투표를 실시할 것","하원 의원의 재산 자격 제도를 폐지할 것","21세 이상의 남자 전체에 의한 보통 선거를 실시할 것","30세 이상 여성에게 선거권을 인정할 것"],a:3,ex:"30세 이상 여성 선거권은 1918년의 결과. 인민 헌장은 21세 이상 ‘남자’ 전체의 보통 선거를 요구"},
+{id:"m10",lv:"중",t:"mc",q:"참정권 확대 운동의 결과, 1918년에 일어난 일은?",c:["21세 이상 남자 보통 선거 실시","30세 이상 여성에게도 선거권 인정","여성에게 남성과 동등한 참정권 인정","인민 헌장 발표"],a:1,ex:"1918년 30세 이상 여성 선거권 → 1928년 남성과 동등"},
+{id:"m11",lv:"중",t:"mc",q:"2세대 인권(사회권)이 등장한 배경으로 옳은 것은?",c:["왕과 귀족의 부당한 억압","산업 혁명 이후 노동자들의 열악한 근로 조건, 빈부 격차","정보 사회에서 개인 정보 확산","제2차 세계 대전 이후 국제 협력 필요"],a:1,ex:"사회권 배경: 산업 혁명 이후 열악한 근로 조건·빈부 격차 → 국가가 생존을 보장해 줄 것을 요구"},
+{id:"m12",lv:"중",t:"mc",q:"3세대 인권(연대권)이 등장한 배경으로 옳은 것은?",c:["제2차 세계대전 이후 인류 공동의 노력 필요, 국제적 협력 및 연대 강조","시민 계급의 성장","제1차 세계 대전 이후 바이마르 공화국 수립","재산에 따른 참정권 제한"],a:0,ex:"연대권: 제2차 세계대전 이후, 인종 차별·국가 간 빈부 격차 → 국제적 협력 및 연대"},
+{id:"m13",lv:"중",t:"mc",q:"연대권의 사례로 옳지 않은 것은?",c:["자결권","평화의 권리","재난으로부터 구제받을 권리","적절한 일자리를 얻지 못한 국민의 생계비 지원"],a:3,ex:"생계비 지원(바이마르 헌법 제163조)은 사회권"},
+{id:"m14",lv:"중",t:"mc",q:"바이마르 헌법 이후 국가의 역할 변화로 옳은 것은?",c:["국가의 간섭을 최소화해야 함","국가의 적극적인 역할이 필수적인 것이 됨","의회의 권한이 왕보다 약해짐","국제기구가 국가를 대신함"],a:1,ex:"사회권 등장 → 국가의 적극적인 역할 필수"},
+{id:"m15",lv:"중",t:"mc",q:"세계 인권 선언 제22조 ‘사회 보장을 요구할 권리’가 나타내는 것은?",c:["국가의 인권 보장 책임(사회권)","소유권 불가침","저항권","잊힐 권리"],a:0,ex:"제22조 → 국가의 인권 보장 책임(사회권)"},
+{id:"m16",lv:"중",t:"mc",q:"세계 인권 선언 제2조(모든 유형의 차별로부터 벗어나…)와 관련된 설명은?",c:["재산에 따라 참정권을 달리 인정","실질적 평등에 근거한 합리적 차별 인정","왕권 제한, 의회 권한 강조","정치적 표현의 자유"],a:1,ex:"실질적 평등(같은 것은 같게, 다른 것은 다르게)에 근거한 합리적 차별 인정"},
+{id:"m17",lv:"중",t:"mc",q:"“국가는 주택 개발 정책 등을 통하여 모든 국민이 쾌적한 주거 생활을 할 수 있도록 노력해야 한다.”는 헌법 몇 조인가?",c:["헌법 제17조","헌법 제34조 ⑥","헌법 제35조 ①","헌법 제35조 ③"],a:3,ex:"주거권 = 헌법 제35조 ③ / 환경권 = 제35조 ① 헷갈리지 않기"},
+{id:"m18",lv:"중",t:"mc",q:"잊힐 권리와 관련된 조문은?",c:["헌법 제17조 사생활의 비밀과 자유","헌법 제34조 ⑥ 재해 예방","헌법 제35조 ① 쾌적한 환경","문화 기본법 제4조"],a:0,ex:"잊힐 권리 = 헌법 제17조"},
+{id:"m19",lv:"중",t:"mc",q:"안전권이 등장한 배경으로 옳은 것은?",c:["여가 시간 증가","자연재해, 감염병 대유행, 안전사고","인구의 도시 집중, 주택 부족","온실가스로 인한 기후 변화"],a:1,ex:"①문화권 ③주거권 ④환경권"},
+{id:"m20",lv:"중",t:"mc",q:"문화권이 등장한 배경으로 옳은 것은?",c:["여가 시간 증가로 인한 문화적 요구 증가, 문화 소외 현상 발생","개인 정보 확산","산업화 및 도시화로 인한 환경 문제","불안정한 주거 생활 증가"],a:0,ex:"문화권: 여가 시간 증가, 문화 소외"},
+{id:"m21",lv:"중",t:"mc",q:"“국가와 국민은 환경 보전을 위하여 노력해야 한다.”가 들어 있는 조문은?",c:["헌법 제35조 ①","헌법 제35조 ③","헌법 제34조 ⑥","헌법 제17조"],a:0,ex:"환경권 = 헌법 제35조 ① (국가와 국민 모두에게 노력 의무)"},
+{id:"m22",lv:"중",t:"ox",q:"프랑스 혁명 당시 제3신분(평민)은 국가 재정의 대부분을 부담했지만 참정권이 없었다.",a:"O",ex:"구제도의 모순 → 제3신분의 불만 폭발"},
+{id:"m23",lv:"중",t:"ox",q:"바이마르 헌법은 제2차 세계 대전 이후 만들어졌다.",a:"X",ex:"바이마르 헌법(1919)은 ‘제1차’ 세계 대전 이후. 제2차 세계대전 이후는 연대권·세계 인권 선언(1948)"},
+{id:"m24",lv:"중",t:"ox",q:"여성 참정권 운동은 영국, 오스트레일리아 등에서 청원, 시위를 통해 전개되었다.",a:"O",ex:"여성 참정권 운동 ①"},
+{id:"m25",lv:"중",t:"ox",q:"시민 혁명을 통해 모든 성인에게 참정권이 보장되었다.",a:"X",ex:"시민 혁명 이후에도 재산, 성별, 인종 등에 따라 참정권 제한"},
+{id:"m26",lv:"중",t:"mc",q:"시민 혁명을 일어난 순서대로 바르게 나열한 것은?",c:["미국 독립 혁명 → 영국 명예혁명 → 프랑스 혁명","영국 명예혁명 → 프랑스 혁명 → 미국 독립 혁명","영국 명예혁명 → 미국 독립 혁명 → 프랑스 혁명","프랑스 혁명 → 미국 독립 혁명 → 영국 명예혁명"],a:2,ex:"명예혁명(1688) → 미국 독립 혁명(1776) → 프랑스 혁명(1789)"},
+{id:"m27",lv:"중",t:"sa",q:"차티스트 운동에서 요구한 보통 선거의 대상은 ‘○○세 이상의 남자 전체’이다. ○○은?",a:["21"],ex:"⑬ 21세 이상의 남자 전체 (★ 표시된 부분)"},
+{id:"m28",lv:"중",t:"mc",q:"인권의 특징과 자료의 연결이 옳지 않은 것은?",c:["인간이라면 누구나 누릴 수 있다 - 보편성","일정 기간에만 한정되지 않고 영구히 보장된다 - 항구성","태어나면서부터 자연스럽게 가진다 - 불가침성","국가나 다른 사람이 침해해서는 안 된다 - 불가침성"],a:2,ex:"태어나면서부터 자연스럽게 가진다 → 천부성"},
+
+/* ===== 상 ===== */
+{id:"s1",lv:"상",t:"mc",q:"다음 자료와 관련된 시민 혁명에 대한 설명으로 옳은 것만 고른 것은?",
+ box:"<p>1. 의회의 동의 없이 자의적으로 법률 및 법률 집행을 정지하는 권한은 위법이다.</p><p>4. 국왕의 대권을 구실로 의회의 승인 없이 … 금전을 징수하는 것은 위법이다.</p><p style='margin-top:8px'>ㄱ. 왕권이 제한되고 의회 권한이 강조되었다.<br>ㄴ. 토머스 제퍼슨이 기초한 문서가 채택되었다.<br>ㄷ. 유혈 사태 없이 진행되었다.<br>ㄹ. 사회권이 처음으로 명시되었다.</p>",
+ c:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ"],a:1,ex:"자료는 권리 장전(영국 명예혁명). ㄴ은 미국 독립 혁명, ㄹ은 바이마르 헌법"},
+{id:"s2",lv:"상",t:"mc",q:"다음 문서들을 시기 순으로 바르게 나열한 것은?",
+ box:"<p>(가) 인간과 시민의 권리 선언 &nbsp;(나) 세계 인권 선언<br>(다) 권리 장전 &nbsp;(라) 바이마르 헌법 &nbsp;(마) 인민 헌장</p>",
+ c:["(다)-(가)-(마)-(라)-(나)","(가)-(다)-(마)-(라)-(나)","(다)-(가)-(라)-(마)-(나)","(다)-(마)-(가)-(라)-(나)"],a:0,ex:"권리 장전(1689) → 인간과 시민의 권리 선언(1789) → 인민 헌장(1838) → 바이마르 헌법(1919) → 세계 인권 선언(1948)"},
+{id:"s3",lv:"상",t:"mc",q:"A~C는 1~3세대 인권 중 하나이다. 옳은 설명은?",
+ box:"<p>A: 국가가 국민의 생존을 보장해 줄 것을 요구하며 등장</p><p>B: 시민 혁명을 통해 강조됨</p><p>C: 국제적 협력 및 연대를 강조하며 등장</p>",
+ c:["A는 1세대 인권이다.","B는 세계 인권 선언에서 처음 명시되었다.","A는 독일 바이마르 헌법에서 처음으로 명시되었다.","C는 산업 혁명 이후 빈부 격차를 배경으로 등장했다."],a:2,ex:"A=사회권(2세대, 바이마르 헌법 최초 명시), B=자유권·평등권·참정권(1세대), C=연대권(3세대, 제2차 세계대전 이후). ④는 A의 배경"},
+{id:"s4",lv:"상",t:"mc",q:"다음 운동에 대한 설명으로 옳은 것만 고른 것은?",
+ box:"<p>영국 노동자들이 인민 헌장을 발표하며 전개한 운동(1838)</p><p style='margin-top:8px'>ㄱ. 비밀 투표를 요구하였다.<br>ㄴ. 여성을 포함한 보통 선거를 요구하였다.<br>ㄷ. 하원 의원의 재산 자격 제도 폐지를 요구하였다.<br>ㄹ. 21세 이상 남자 전체에 의한 보통 선거를 요구하였다.</p>",
+ c:["ㄱ, ㄴ","ㄴ, ㄷ","ㄱ, ㄷ, ㄹ","ㄴ, ㄷ, ㄹ"],a:2,ex:"차티스트 운동. ㄴ(여성 포함 보통 선거)은 여성 참정권 운동의 요구"},
+{id:"s5",lv:"상",t:"mc",q:"다음 조항이 나타내는 내용을 바르게 짝지은 것은?",
+ box:"<p>제1조 인간은 태어나면서부터 자유로우며 평등한 권리를 가진다.</p><p>제3조 모든 주권의 원리는 본질적으로 국민에게 있다.</p>",
+ c:["제1조 - 국민 주권주의 / 제3조 - 천부 인권","제1조 - 천부 인권, 자유권, 평등권 / 제3조 - 국민 주권주의","제1조 - 사회권 / 제3조 - 소유권 불가침","제1조 - 연대권 / 제3조 - 정치적 표현의 자유"],a:1,ex:"인간과 시민의 권리 선언: 제1조 ⑧ 천부 인권·자유권·평등권, 제3조 ⑩ 국민 주권주의"},
+{id:"s6",lv:"상",t:"mc",q:"다음 자료에 대한 설명으로 옳은 것은?",
+ box:"<p>제151조 ① 경제생활의 질서는 모든 사람에게 인간다운 삶을 보장할 것을 목적으로 하는 정의의 원칙에 기초해야 한다.</p><p>제163조 ② … 적절한 일자리를 얻지 못한 국민은 필요한 생계비를 지원받을 수 있다.</p>",
+ c:["시민 혁명 과정에서 공포되었다.","국제 연합 총회에서 채택되었다.","제1차 세계 대전 이후 사회권을 처음으로 명시하였다.","왕권 제한과 의회 권한 강조를 규정하였다."],a:2,ex:"자료는 ★ 독일 바이마르 헌법(1919) → 사회권 최초 명시, 국가의 적극적 역할"},
+{id:"s7",lv:"상",t:"mc",q:"현대 사회의 인권과 사례의 연결로 옳은 것은?",
+ c:["주거권 - 기후변화 협약","잊힐 권리 - 지우개 서비스","안전권 - 문화가 있는 날","환경권 - 최저 주거 기준"],a:1,ex:"기후변화 협약=환경권, 문화가 있는 날=문화권, 최저 주거 기준=주거권"},
+{id:"s8",lv:"상",t:"mc",q:"다음 조문과 관련된 권리의 등장 배경으로 옳은 것은?",
+ box:"<p>헌법 제34조 ⑥ 국가는 재해를 예방하고 그 위험으로부터 국민을 보호하기 위하여 노력해야 한다.</p>",
+ c:["인구의 도시 집중, 주택 부족","자연재해, 감염병 대유행, 안전사고","여가 시간 증가, 문화 소외","정보 사회에서 개인 정보 확산"],a:1,ex:"제34조 ⑥ → 안전권. 배경: 자연재해, 감염병 대유행, 안전사고"},
+{id:"s9",lv:"상",t:"mc",q:"다음 중 옳지 않은 설명은?",
+ c:["권리 장전은 1689년 의회가 제정하였다.","미국 독립 혁명으로 국민주권, 천부 인권, 저항권이 규정되었다.","세계 인권 선언은 제1차 세계 대전 이후 채택되었다.","프랑스 혁명은 제3신분의 불만이 폭발하여 일어났다."],a:2,ex:"세계 인권 선언(1948)은 ‘제2차’ 세계대전 이후. 제1차 이후는 바이마르 헌법(1919)"},
+{id:"s10",lv:"상",t:"mc",q:"참정권 확대 과정에 대한 설명으로 옳은 것만 고른 것은?",
+ box:"<p>ㄱ. 시민 혁명 이후 일정 수준 이상의 재산이 있는 성인 남성만 투표권이 보장되었다.<br>ㄴ. 차티스트 운동은 30세 이상 여성의 선거권을 요구하였다.<br>ㄷ. 1918년 30세 이상 여성에게도 선거권이 인정되었다.<br>ㄹ. 1928년부터 여성에게 남성과 동등한 참정권이 인정되었다.</p>",
+ c:["ㄱ, ㄴ","ㄷ, ㄹ","ㄱ, ㄷ, ㄹ","ㄴ, ㄷ, ㄹ"],a:2,ex:"ㄴ: 차티스트 운동은 21세 이상 남자 전체의 보통 선거를 요구"},
+{id:"s11",lv:"상",t:"mc",q:"학생들의 대화 중 옳게 말한 사람만 고른 것은?",
+ box:"<p>갑: 인권은 국가나 다른 사람이 침해해서는 안 되는 불가침성을 가져.<br>을: 1세대 인권은 국가의 적극적인 역할을 강조했어.<br>병: 연대권은 국가 간 빈부 격차 같은 문제에 관심을 가지며 등장했어.<br>정: 잊힐 권리는 헌법 제35조 ①과 관련 있어.</p>",
+ c:["갑, 을","갑, 병","을, 정","병, 정"],a:1,ex:"을: 국가의 적극적 역할은 사회권(2세대). 정: 잊힐 권리는 헌법 제17조, 제35조 ①은 환경권"},
+{id:"s12",lv:"상",t:"mc",q:"다음 선언에 대한 설명으로 옳은 것은?",
+ box:"<p>제1조 모든 사람은 태어날 때부터 자유로우며 그 존엄과 권리에 있어 동등하다. … 서로 형제애의 정신으로 행동해야 한다.</p><p>제22조 모든 사람에게는 사회의 일원으로서 사회 보장을 요구할 권리가 있다.</p>",
+ c:["시민 혁명 과정에서 프랑스 국민 의회가 공포하였다.","제1조에는 천부 인권과 연대권이 나타나 있다.","제22조는 소유권 불가침 원리를 나타낸다.","재산에 따른 참정권 제한을 인정하였다."],a:1,ex:"세계 인권 선언(1948). 제1조 ⑭ 천부 인권, 연대권 / 제22조 국가의 인권 보장 책임(사회권)"},
+{id:"s13",lv:"상",t:"mc",q:"현대 사회의 인권과 그 의미의 연결로 옳지 않은 것은?",
+ c:["주거권 - 인간다운 주거 생활을 할 권리","환경권 - 생활에 필요한 모든 조건이 충족된 환경을 누릴 권리","문화권 - 각종 위험으로부터 안전을 보호받을 권리","잊힐 권리 - 자신에 관한 정보의 삭제 및 확산 방지를 요구할 수 있는 권리"],a:2,ex:"문화권 = 공동체의 문화생활에 자유롭게 참여하고 문화적 정체성을 유지할 권리. ③은 안전권"},
+{id:"s14",lv:"상",t:"mc",q:"(가), (나) 혁명에 대한 설명으로 옳은 것은?",
+ box:"<p>(가) 13개 식민주 대표들이 모여 독립 선언문을 채택하고 공포하였다.</p><p>(나) 바스티유 감옥이 함락된 후 국민 의회가 인권 선언을 공포하였다.</p>",
+ c:["(가)는 의회가 왕을 폐하고 새 왕을 추대한 사건이다.","(나)를 통해 재산권, 자유권, 평등권이 규정되었다.","(가)는 (나)보다 늦게 일어났다.","(나)는 노동자들이 보통 선거를 요구한 운동이다."],a:1,ex:"(가) 미국 독립 혁명(1776), (나) 프랑스 혁명(1789). ①은 명예혁명, ④는 차티스트 운동"},
+{id:"s15",lv:"상",t:"mc",q:"시민 혁명의 배경으로 옳은 것만 고른 것은?",
+ box:"<p>ㄱ. 계몽사상, 사회 계약설, 천부 인권 사상의 확산<br>ㄴ. 산업 혁명 이후 빈부 격차 발생<br>ㄷ. 상공업 발달 과정에서 성장한 시민 계급<br>ㄹ. 제2차 세계대전 이후 인류 공동의 노력 필요</p>",
+ c:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ"],a:1,ex:"ㄴ은 사회권, ㄹ은 연대권의 배경"},
+{id:"s16",lv:"상",t:"mc",q:"다음 중 연대권의 사례로만 묶인 것은?",
+ c:["자결권, 아동 권리 협약, 장애인 권리 협약","저항권, 국민주권, 천부 인권","생계비 지원, 노동할 기회","보통 선거, 비밀 투표"],a:0,ex:"연대권: 자결권, 평화의 권리, 재난 구제, 지속 가능한 환경, 인종·여성 차별 철폐 협약, 아동·장애인 권리 협약"},
+{id:"s17",lv:"상",t:"mc",q:"다음 조문들이 공통적으로 보장하려는 권리 영역과 거리가 먼 것은?",
+ box:"<p>헌법 제35조 ③ 국가는 … 쾌적한 주거 생활을 할 수 있도록 노력해야 한다.</p><p>헌법 제35조 ① … 국가와 국민은 환경 보전을 위하여 노력해야 한다.</p><p>헌법 제34조 ⑥ 국가는 재해를 예방하고 …</p>",
+ c:["주거권","환경권","안전권","잊힐 권리"],a:3,ex:"제35조 ③ 주거권, 제35조 ① 환경권, 제34조 ⑥ 안전권. 잊힐 권리는 제17조"},
+{id:"s18",lv:"상",t:"mc",q:"(가)~(다) 문서의 공통점으로 가장 적절한 것은?",
+ box:"<p>(가) 권리 장전 &nbsp;(나) 미국 독립 선언문 &nbsp;(다) 인간과 시민의 권리 선언</p>",
+ c:["사회권을 처음으로 명시하였다.","시민 혁명 과정에서 나온 문서이다.","국제 연합 총회에서 채택되었다.","여성에게 동등한 참정권을 인정하였다."],a:1,ex:"모두 시민 혁명(명예혁명·미국 독립 혁명·프랑스 혁명)의 문서 → 1세대 인권"},
+{id:"s19",lv:"상",t:"mc",q:"다음 인권 특징 중 (가)에 해당하는 것은?",
+ box:"<p>(가) 인권은 국가가 허락해서 생기는 것이 아니라, 하늘이 부여한 것으로 사람은 태어나면서부터 자연적으로 당연히 인권을 가진다.</p>",
+ c:["보편성","천부성","항구성","불가침성"],a:1,ex:"태어나면서부터 자연적으로 당연히 + 하늘이 부여(천부 인권 사상) → 천부성"},
+{id:"s20",lv:"상",t:"mc",q:"다음 중 옳은 설명의 개수는?",
+ box:"<p>ㄱ. 미국 독립 선언문은 저항권을 규정하였다.<br>ㄴ. 세계 인권 선언 제2조는 합리적 차별을 인정한 실질적 평등과 관련 있다.<br>ㄷ. 안전권 사례로 지하철 안전문이 있다.<br>ㄹ. 문화권 관련 조문은 헌법 제17조이다.</p>",
+ c:["1개","2개","3개","4개"],a:2,ex:"ㄹ: 문화권은 문화 기본법 제4조. 헌법 제17조는 잊힐 권리"}
+];
+
+/* ---------- 저장 ---------- */
+const KEY="tsb-wrong-01";
+function loadWrong(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+function saveWrong(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}}
+
+/* ---------- 탭 ---------- */
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+b.dataset.v));
+  if(b.dataset.v==="wrong")renderWrong();
+  window.scrollTo(0,0);
+});
+
+/* ---------- 가리기 ---------- */
+const blankBtn=document.getElementById("blankBtn");
+blankBtn.onclick=()=>{
+  const on=document.body.classList.toggle("blank");
+  blankBtn.classList.toggle("on",on);blankBtn.setAttribute("aria-pressed",on);
+  blankBtn.textContent=on?"가리기 끄기":"형광펜 가리기";
+  document.querySelectorAll(".show").forEach(e=>e.classList.remove("show"));
+};
+document.getElementById("v-concept").addEventListener("click",e=>{
+  if(!document.body.classList.contains("blank"))return;
+  const t=e.target.closest(".hl,.ans");if(t){t.classList.toggle("show");e.stopPropagation()}
+});
+
+/* ---------- 퀴즈 ---------- */
+const LV=[["전체","all"],["하","하"],["중","중"],["상","상"]];
+let pick="all";
+const lvBox=document.getElementById("levels");
+LV.forEach(([n,v])=>{
+  const b=document.createElement("button");
+  const cnt=v==="all"?Q.length:Q.filter(q=>q.lv===v).length;
+  b.innerHTML=`<b>${n}</b><span>${cnt}문제</span>`;
+  if(v===pick)b.classList.add("on");
+  b.onclick=()=>{pick=v;lvBox.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b))};
+  lvBox.appendChild(b);
+});
+document.getElementById("startBtn").onclick=()=>start(pick==="all"?Q:Q.filter(q=>q.lv===pick));
+
+let pool=[],idx=0,score=0;
+const run=document.getElementById("quizRun"),startBox=document.getElementById("quizStart");
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function start(list){
+  if(!list.length)return;
+  pool=shuffle(list);idx=0;score=0;
+  startBox.hidden=true;run.hidden=false;
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x.dataset.v==="quiz"));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-quiz"));
+  show();
+}
+const norm=s=>String(s).replace(/[\s·.,()]/g,"").toLowerCase();
+function show(){
+  const q=pool[idx];
+  let h=`<div class="meta"><span>${idx+1} / ${pool.length}</span><span>맞힌 문제 ${score}</span></div>
+  <div class="bar"><i style="width:${idx/pool.length*100}%"></i></div>
+  <div class="qcard"><div class="q"><span class="lv ${q.lv}">${q.lv}</span>${q.q}</div>`;
+  if(q.box)h+=`<div class="box">${q.box}</div>`;
+  if(q.t==="mc")h+=`<div class="choices">${q.c.map((c,i)=>`<button data-i="${i}">${"①②③④⑤"[i]} ${c}</button>`).join("")}</div>`;
+  if(q.t==="ox")h+=`<div class="choices ox"><button data-i="O">O</button><button data-i="X">X</button></div>`;
+  if(q.t==="sa")h+=`<div class="short"><input id="sa" placeholder="정답 입력" autocomplete="off"><button class="btn" id="saBtn">확인</button></div>`;
+  h+=`<div id="res"></div></div>`;
+  run.innerHTML=h;window.scrollTo(0,0);
+  if(q.t==="sa"){
+    const inp=document.getElementById("sa");
+    const go=()=>{if(!inp.value.trim())return;inp.disabled=true;document.getElementById("saBtn").disabled=true;
+      judge(q.a.some(a=>norm(a)===norm(inp.value)),q.a[0])};
+    document.getElementById("saBtn").onclick=go;inp.onkeydown=e=>{if(e.key==="Enter")go()};
+  }else{
+    run.querySelectorAll(".choices button").forEach(b=>b.onclick=()=>{
+      const v=q.t==="mc"?+b.dataset.i:b.dataset.i;const ok=v===q.a;
+      run.querySelectorAll(".choices button").forEach(x=>{x.disabled=true;
+        const xv=q.t==="mc"?+x.dataset.i:x.dataset.i;if(xv===q.a)x.classList.add("ok")});
+      if(!ok)b.classList.add("no");
+      judge(ok,q.t==="mc"?"①②③④"[q.a]+" "+q.c[q.a]:q.a);
+    });
+  }
+}
+function judge(ok,ans){
+  const q=pool[idx];let w=loadWrong();
+  if(ok){score++;w=w.filter(id=>id!==q.id)}else if(!w.includes(q.id))w.push(q.id);
+  saveWrong(w);
+  document.getElementById("res").innerHTML=`<div class="res">${ok?'<b class="o">정답!</b>':'<b class="x">오답</b> · 정답: '+ans}<br>${q.ex}</div>
+  <div class="nextrow"><button class="btn ghost" id="quit">그만하기</button><button class="btn" id="next">${idx+1<pool.length?"다음 문제":"결과 보기"}</button></div>`;
+  document.getElementById("next").onclick=()=>{idx++;idx<pool.length?show():end()};
+  document.getElementById("quit").onclick=end;
+  document.getElementById("next").focus();
+}
+function end(){
+  const solved=Math.min(idx+1,pool.length);
+  run.innerHTML=`<div class="end"><div class="big">${score} / ${solved}</div>
+  <p style="color:var(--sub)">틀린 문제는 오답 탭에 모여 있어.</p>
+  <div class="nextrow" style="justify-content:center"><button class="btn ghost" id="toWrong">오답 보기</button><button class="btn" id="again">다시 풀기</button></div></div>`;
+  document.getElementById("again").onclick=()=>{run.hidden=true;startBox.hidden=false};
+  document.getElementById("toWrong").onclick=()=>{run.hidden=true;startBox.hidden=false;document.querySelector('nav button[data-v="wrong"]').click()};
+}
+
+/* ---------- 오답 ---------- */
+function ansText(q){return q.t==="mc"?"①②③④"[q.a]+" "+q.c[q.a]:(Array.isArray(q.a)?q.a[0]:q.a)}
+function renderWrong(){
+  const w=loadWrong(),list=Q.filter(q=>w.includes(q.id)),box=document.getElementById("wrongList");
+  document.getElementById("wrongRetry").disabled=!list.length;
+  if(!list.length){box.innerHTML=`<p class="empty">오답이 없어. 문제 탭에서 풀어 보면 틀린 문제가 여기 모여.</p>`;return}
+  box.innerHTML=list.map(q=>`<div class="witem"><span class="lv ${q.lv}">${q.lv}</span><div class="q">${q.q}</div>${q.box?`<div class="box">${q.box}</div>`:""}<div class="a">정답: ${ansText(q)}<br>${q.ex}</div></div>`).join("");
+}
+document.getElementById("wrongRetry").onclick=()=>{const w=loadWrong();start(Q.filter(q=>w.includes(q.id)))};
+document.getElementById("wrongClear").onclick=()=>{if(confirm("오답 기록을 모두 지울까?")){saveWrong([]);renderWrong()}};
+</script>
+</body>
+</html>
