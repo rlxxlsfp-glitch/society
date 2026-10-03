@@ -122,6 +122,22 @@ body.blank .ans.show{color:var(--pen)}
 .witem .q{font-size:15.5px;margin:4px 0}
 .witem .a{font-size:14px;color:var(--sub)}
 .empty{color:var(--sub);text-align:center;padding:40px 0}
+.del{text-decoration:line-through;color:var(--sub)}
+.tbl{overflow-x:auto;margin:8px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:14.5px}
+.tbl th,.tbl td{border-top:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+.tbl th{font-size:13px;color:var(--sub);font-weight:500}
+.tbl td:last-child{white-space:nowrap;font-weight:700}
+.tip{border:1.5px solid var(--ink);border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14.5px}
+.tip p{margin:4px 0}
+.arrows p{margin:3px 0;font-size:14.5px}.arrows b{display:inline-block;min-width:11.5em}
+.courts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.courts>div{background:var(--soft);border-radius:10px;padding:8px 10px;font-size:14px}
+.courts p{margin:2px 0}.courts .ar{color:var(--sub);font-size:13px}
+.flow{background:var(--soft);border-radius:8px;padding:6px 10px;font-size:14.5px;margin:6px 0!important}
+.units{display:flex;gap:8px;margin:12px 0 0;overflow-x:auto}
+.units button{flex:none;border:1.5px solid var(--line);background:none;color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.units button.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -129,7 +145,8 @@ body.blank .ans.show{color:var(--pen)}
 <div class="wrap">
 <header>
   <h1>통합사회B</h1>
-  <p>Ⅰ. 인권 보장과 헌법 / 01. 인권의 의미와 현대 사회의 인권</p>
+  <p id="unitTitle"></p>
+  <div class="units" id="units"></div>
 </header>
 
 <!-- ===================== 개념 ===================== -->
@@ -139,6 +156,7 @@ body.blank .ans.show{color:var(--pen)}
   <span class="legend"><span class="hl">형광펜</span> <span class="ul">밑줄</span> <span class="star">★</span> <span class="ans">손필기</span></span>
 </div>
 
+<div class="unit" data-u="1">
 <h2>[1] 인권의 의미와 변화 양상</h2>
 <h3>1. <span class="hl">인권</span></h3>
 <div class="def"><b>의미</b> — <span class="hl">인간의 존엄과 가치를 유지</span>하며 살아갈 수 있도록 <span class="hl">모든 사람</span>이 누려야 할 <span class="hl">기본적인 권리</span></div>
@@ -268,6 +286,202 @@ body.blank .ans.show{color:var(--pen)}
 <span class="k">등장 배경</span><p>정보 사회에서 개인 정보 확산으로 사생활의 비밀 자유 침해 증가</p>
 <span class="k">관련 조문</span><p>헌법 제17조 모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다.</p>
 <span class="k">사례</span><p><span class="hl">지우개 서비스</span>, <span class="hl">디지털 장의사</span></p></div>
+</div>
+<div class="unit" data-u="2" hidden>
+<h2>[1] 인권 보장을 위한 헌법의 역할</h2>
+<h3>1. <span class="hl">헌법</span></h3>
+<div class="def"><b>의미</b> — 국가의 통치 조직과 통치 작용의 원리를 규정하고, <span class="hl">국민의 기본권을 보장</span>하는 최고법 (입헌주의¹⁾)</div>
+<h3>상위법 우선의 원칙</h3>
+<div class="src"><span class="t">자료[1] 상위법 우선의 원칙</span>
+<p><b><span class="hl">헌법</span> &gt; 법률(국회) &gt; 명령(대통령령, 총리령, 부령²⁾) &gt; 조례(지방 의회) &gt; 규칙(지방자치단체장)</b></p>
+<p>ㆍ법률 체계 내에서 상위 법규가 하위 법규에 우선하는 원칙</p>
+<p>ㆍ하위법이 상위법에 모순되거나 저촉되면 그 효력은 부인됨</p></div>
+<div class="foot">
+<p>1) 입헌주의: 국가의 모든 권력이 헌법에 따르도록 하여 국가 권력의 자의적 행사를 방지하고, 국민의 인권을 실질적으로 보장하는 정치 원리</p>
+<p>2) 부령: 부의 장관이 내리는 명령</p></div>
+
+<h2>2. <span class="hl">헌법상의 기본권</span>³⁾<span class="imp">중요</span></h2>
+<div class="foot" style="margin-top:0;border:0;padding-top:0"><p>3) 기본권: 인권 중에서 헌법에 규정하여 보장되는 기본적인 권리</p></div>
+
+<div class="mod"><h3><span class="hl">인간의 존엄과 가치 및 행복 추구권</span></h3>
+<p>의미: <span class="hl">모든 개별적인 기본권의 내용을 담은</span> <span class="hl">포괄적 권리</span>이자 (<span class="num">①</span> <span class="ans">헌법 최고 이념</span>)</p>
+<p class="del">인간의 존엄과 가치 종류: 생명권, 인격권, 자기결정권 등</p>
+<p class="del">행복 추구권 종류: 휴식권, 수면권, 일조권 등</p>
+<p class="note">✎ 종류 두 줄은 학습지에서 줄 그어져 있음</p></div>
+<div class="src"><span class="t">조문[1] 헌법 제10조</span>
+<p>모든 국민은 <span class="hl">인간으로서의 존엄과 가치</span>를 가지며, <span class="hl">행복을 추구할 권리</span>를 가진다. 국가는 개인이 가지는 불가침의 기본적 인권을 확인하고 이를 보장할 의무를 진다.</p></div>
+<div class="src"><span class="t">자료[2] 수형자의 사복 착용 판례</span>
+<p>…<span class="hl">수형자로 하여금 형사재판 출석 시 아무런 예외 없이 사복 착용을 금지하고 재소자용 의류를 입도록 하여</span> 인격적인 모욕감과 수치심 속에서 재판을 받도록 하는 것은 유죄의 선입견을 줄 수 있고… 사복착용을 허용하지 아니한 것은 <span class="hl">청구인의 공정한 재판을 받을 권리, 인격권(인간의 존엄과 가치), 행복추구권을 침해</span>한다(2013헌마712).</p></div>
+<div class="src"><span class="t">자료[3] 유치장 내 화장실 설치 판례</span>
+<p>미결수용자에게는 유치장 밖의 경찰서 일반화장실의 사용이 허가되지 않았고, <span class="hl">유치장 내 설치된 화장실</span>은 차폐시설이 불충분하여 … <span class="hl">개방적 구조</span>를 가졌다. 미결수용자들에게 유치기간동안 <span class="hl">이와 같은 구조의 화장실 사용을 강제하는 것</span>에 대하여 헌법재판소는 <span class="hl">헌법 제10조의 인간의 존엄과 가치로부터 유래하는 인격권을 침해</span>하는 정도에 이르렀다고 판단하였다(2000헌마546).</p></div>
+<div class="src"><span class="t">자료[4] 자기 낙태죄 판례</span>
+<p><span class="hl">자기낙태죄 조항</span>은… <span class="hl">임신기간 전체를 통틀어 모든 낙태를 전면적·일률적으로 금지</span>하고, <span class="hl">이를 위반할 경우 형벌을 부과함으로써 임신의 유지·출산을 강제</span>하고 있으므로, <span class="hl">임신한 여성의 자기결정권(인간의 존엄과 가치)을 제한</span>한다(2017헌바127).</p></div>
+
+<div class="mod"><h3><span class="hl">자유권</span></h3>
+<p>ㆍ<span class="hl">국가 권력의 간섭이나 침해를 받지 않고 생활</span>할 권리 (<span class="num">②</span> <span class="ans">소극적, 방어적 권리</span>)</p>
+<p><span class="star">★</span> <span class="hl">헌법에 열거되지 않더라도 보장</span>되는 <span class="hl">포괄적 권리</span> <span class="note" style="display:inline">✎ 써 있지 않아도 O</span></p>
+<p>ㆍ역사적으로 <span class="hl">가장 오래된 권리</span></p>
+<p>ㆍ종류: <span class="hl">신체, 거주·이전, 직업 선택, 주거, 사생활의 비밀과 자유, 통신, 양심, 종교, 언론·출판·집회·결사, 학문·예술, 재산권</span></p></div>
+<div class="src"><span class="t">조문[2] 헌법 제12조 신체의 자유</span>
+<p>① 모든 국민은 <span class="hl">신체의 자유</span>를 가진다. 누구든지 <span class="hl">법률</span>에 의하지 아니하고는 체포·구속·압수·수색 또는 심문을 받지 아니하며, 법률과 <span class="hl">적법한 절차</span>에 의하지 아니하고는 처벌·보안처분 또는 강제노역을 받지 아니한다.</p>
+<p>② 모든 국민은 <span class="hl">고문을 받지 아니하며</span>, <span class="hl">형사상 자기에게 불리한 진술을 강요당하지 아니한다.</span></p>
+<p>③ <span class="hl">체포·구속·압수 또는 수색</span>을 할 때에는 적법한 절차에 따라 검사의 신청에 의하여 법관이 발부한 <span class="hl">영장을 제시</span>하여야 한다. (현행범, 증거인멸 우려의 경우에는 예외)</p></div>
+<div class="src"><span class="t">조문[3] 헌법 제17조 사생활의 비밀과 자유</span>
+<p>모든 국민은 <span class="hl">사생활의 비밀과 자유</span>를 침해받지 아니한다.</p></div>
+<div class="src"><span class="t">자료[5] 간통죄 판례</span>
+<p>성적 자기결정권을 보다 중요시하는 인식이 확산됨에 따라 <span class="hl">간통행위</span>를 국가가 형벌로 다스리는 것이 적정한지… 혼인과 가정의 유지는 당사자의 자유로운 의지와 애정에 맡겨야지, 형벌을 통하여 타율적으로 강제될 수 없는 것이며… 민사상의 제도에 의해 보다 효과적으로 달성될 수 있고… 결국 심판대상조항은 <span class="hl">과잉금지원칙에 위배</span>하여 <span class="hl">국민의 성적 자기결정권 및 사생활의 비밀과 자유를 침해</span>하는 것으로 헌법에 위배된다(2009헌바17등).</p></div>
+<div class="src"><span class="t">자료[6] 경찰관의 영장 없는 불법적 체포 판례</span>
+<p><span class="hl">경찰관의 행위가 적법한 공무집행을 벗어나 영장 없이 불법하게 체포</span>한 것으로 볼 수밖에 없다면, <span class="hl">그 체포를 면하려고 반항하는 과정에서 경찰관에게 상해를 가한 것</span>은 불법 체포로 인한 신체에 대한 현재의 부당한 침해에서 벗어나기 위한 행위로서 <span class="hl">정당방위에 해당</span>하여 위법성이 조각된다(99도4341).</p></div>
+
+<div class="mod"><h3><span class="hl">평등권</span></h3>
+<p>ㆍ(<span class="num">③</span> <span class="ans">합리적 이유</span>) <span class="hl">없이</span> 성별, 종교, 사회적 신분 등에 의해 차별받지 않을 권리</p>
+<p>ㆍ<span class="hl">‘같은 것은 같게, 다른 것은 다르게’</span></p>
+<p><span class="star">★</span> <span class="hl">다른 기본권 보장의 전제 조건</span>이 되는 <span class="hl">본질적 권리</span></p></div>
+<div class="src"><span class="t">조문[4] 헌법 제11조 평등권</span>
+<p><span class="hl">모든 국민은 법 앞에 평등</span>하다. 누구든지 <span class="hl">성별·종교 또는 사회적 신분</span>에 의하여 정치적·경제적·사회적·문화적 <span class="hl">생활의 모든 영역에 있어서 차별을 받지 아니한다.</span></p></div>
+<div class="src"><span class="t">자료[7] 제대군인 가산점 제도 판례</span>
+<p><span class="hl">제대군인이 공무원채용시험 등에 응시한 때에 과목별 만점의 5% 또는 3%를 가산하는 제대군인가산점제도</span>… 가산점 제도는 제대군인에 비하여 <span class="hl">여성 및 제대군인이 아닌 남성을 부당한 방법으로 지나치게 차별</span>하는 것으로 <span class="hl">헌법 제11조(평등권)에 위배되며, 이로 인하여 청구인들의 평등권이 침해</span>된다. … 가산점제도는 <span class="hl">능력주의에 기초하지 아니하고 성별, ‘현역복무를 감당할 수 있을 정도로 신체가 건강한가’</span>와 같은 불합리한 기준으로 <span class="hl">여성과 장애인 등의 공직 취임권을 지나치게 제약</span>하는 것으로서 <span class="hl">헌법 제25조(공무 담임권)에 위배되며, 이로 인하여 청구인들의 공무담임권(참정권)이 침해</span>된다(98헌마363).</p></div>
+<div class="src"><span class="t">자료[8] 18세 미만 소년 당구장 출입 판례</span>
+<p>당구장을 이용하는 고객 중 출입이 제지되는 <span class="hl">18세 미만 소년의 입장에서 침해되는 기본권</span>은… 특히 <span class="hl">어떤 소년이 운동선수로 대성할 수 있는 능력을 발휘해 보고자 하는 경우 다른 종류의 운동 지망생과의 관계에서 평등의 원칙이 문제될 수 있음은 물론</span>이다. … <span class="hl">당구를 통하여 자신의 소질과 취미를 살리고자 하는 소년에 대하여 당구를 금하는 것은 헌법상 보장된 행복추구권의 한 내용인 일반적인 행동자유권의 침해</span>가 될 수 있을 것이다(92헌마80).</p></div>
+
+<div class="mod"><h3><span class="hl">참정권</span></h3>
+<p>ㆍ<span class="hl">국가 의사 결정</span>에 <span class="hl">주체적으로 참여</span>할 수 있는 권리 (<span class="num">④</span> <span class="ans">능동적 권리</span>)</p>
+<p class="note">✎ 국민 → 대표 → 국가 의사 결정</p>
+<p>ㆍ<span class="hl">국가의 존재를 전제</span>로 하는 <span class="hl">적극적 권리</span> → 국가에게 <span class="hl">선거권, 피선거권</span> 적극적으로 행사 <span class="note" style="display:inline">✎ 선거권=투표, 피선거권=후보 출마</span></p>
+<p>ㆍ종류: 국민 투표권, 선거권, 공무 담임권(피선거권+공직 취임권)⁴⁾</p></div>
+<div class="src"><span class="t">조문[5]·[6] 선거권·공무담임권</span>
+<p>헌법 제24조 모든 국민은 법률이 정하는 바에 의하여 선거권을 가진다.</p>
+<p>헌법 제25조 모든 국민은 법률이 정하는 바에 의하여 공무담임권을 가진다.</p></div>
+<div class="foot"><p>4) 공무 담임권: 국민이 국가나 지방 자치 단체 기관의 구성원으로서 공적인 업무를 담당할 수 있는 권리로, 피선거권과 공직 취임권을 포괄한다.</p></div>
+
+<div class="mod"><h3><span class="hl">청구권</span></h3>
+<p>ㆍ<span class="hl">다른 기본권이 침해되었을 때 이를 구제하도록 요구</span>할 수 있는 권리 (<span class="num">⑤</span> <span class="ans">절차적, 수단적, 도구적 권리</span>)</p>
+<p>ㆍ<span class="hl">기본권 보장을 위한 기본권</span></p>
+<p>ㆍ<span class="hl">국가의 존재를 전제로 하는 적극적 권리</span> → <span class="hl">국가에게</span> 자신의 기본권 침해 구제를 적극적으로 <span class="hl">요구</span></p>
+<p>ㆍ종류: 청원권, 재판 청구권(공정한 재판을 받을 권리), 형사 보상 청구권, 국가 배상 청구권, 범죄 피해자 구조 청구권</p></div>
+<div class="src"><span class="t">조문[7]~[9] 청원권·재판 청구권·국가 배상 청구권</span>
+<p>헌법 제26조 ① 모든 국민은 법률이 정하는 바에 의하여 국가기관에 <span class="hl">문서로 청원할 권리</span>를 가진다.</p>
+<p>헌법 제27조 ① 모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다.</p>
+<p>헌법 제29조 ① 공무원의 직무상 불법행위로 손해를 받은 국민은 법률이 정하는 바에 의하여 <span class="hl">국가 또는 공공단체에 정당한 배상을 청구</span>할 수 있다. 이 경우 공무원 자신의 책임은 면제되지 아니한다.</p></div>
+<div class="src"><span class="t">자료[9] 검사의 과도한 증인 소환 판례</span>
+<p><span class="hl">검사가 구속된 증인을 약 200회 소환</span>한 것이… 수감자를 <span class="hl">거의 매일 검사실로 하루 종일 소환</span>하여 <span class="hl">피고인측 변호인의 접근을 차단하고, 검찰에서의 진술을 번복하도록 회유하고 압박</span>한 행위는 피고인의 <span class="hl">공정한 재판을 받을 권리를 침해</span>한 것이다(99헌마496).</p></div>
+
+<div class="mod"><h3><span class="hl">사회권</span></h3>
+<p>ㆍ<span class="hl">국가</span>에 대하여 <span class="hl">인간다운 삶의 보장(급부)을 요구</span>할 수 있는 권리 (<span class="num">⑥</span> <span class="ans">적극적 권리</span>)</p>
+<p>ㆍ자본주의의 문제점 → 현대 복지 국가에서 보장되기 시작</p>
+<p>ㆍ<span class="hl">실질적 평등 실현</span>을 목적으로 함 (기회의 평등 + 어느 정도의 결과의 평등)</p>
+<p>ㆍ종류: 교육권(교육을 받을 권리), 의무교육(무상), 근로권, 최저임금, 근로 3권, 인간다운 삶, 사회 보장(복지) 제도, 여성·연소자 특별 보호, 환경권, 양성 평등, 모성 보호, 보건권, 안전권, 약자 보호, 실질적 평등</p></div>
+<div class="src"><span class="t">조문[10] 헌법 제31조 교육권·의무교육</span>
+<p>① 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.</p>
+<p>② 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육(중학교)을 받게 할 의무를 진다.</p></div>
+<div class="src"><span class="t">조문[11] 헌법 제34조 인간다운 삶·사회 보장·여성·연소자 보호</span>
+<p>① 모든 국민은 <span class="hl">인간다운 생활을 할 권리</span>를 가진다.</p>
+<p>② 국가는 사회보장·사회복지의 증진에 노력할 의무를 진다.</p>
+<p>③ 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다.</p>
+<p>④ 국가는 노인과 청소년의 복지향상을 위한 정책을 실시할 의무를 진다.</p></div>
+<div class="src"><span class="t">자료[10] 과외 판례</span>
+<p>자녀의 양육과 교육에 있어서 <span class="hl">부모의 교육권은 교육의 모든 영역에서 존중</span>되어야 하며, 다만 <span class="hl">학교 교육에 관한 한 국가는</span> 헌법 제31조에 의하여 … 독자적인 교육 권한을 부여받음으로써 <span class="hl">부모의 교육권과 함께 자녀의 교육을 동등하게 담당</span>하지만, <span class="hl">학교 밖의 교육 영역에서는 원칙적으로 부모의 교육권이 우위를 차지</span>한다. <span class="hl">과외금지를 규정한 법률조항</span>은 <span class="hl">피해의 최소성과 법익의 균형성을 충족하지 못하므로 과잉금지의 원칙에 위배</span>된다(98헌가16).</p></div>
+
+<h3>자료[11] 기본권 특징 비교 정리 <span class="imp">중요</span></h3>
+<div class="tbl"><table>
+<tr><th>특징</th><th>기본권</th></tr>
+<tr><td>가장 오래된 권리 / 소극적 / 방어적 권리</td><td><span class="hl">자유권</span></td></tr>
+<tr><td>헌법에 열거되지 않아도 보장되는 권리</td><td><span class="hl">자유권, (평등권)</span></td></tr>
+<tr><td>포괄적 권리</td><td><span class="hl">자유권, 평등권</span></td></tr>
+<tr><td>다른 기본권 보장의 전제 조건 / 본질적 권리</td><td><span class="hl">평등권</span></td></tr>
+<tr><td>능동적 권리</td><td><span class="hl">참정권</span></td></tr>
+<tr><td>적극적 권리 / 국가의 존재를 전제로 하는 권리</td><td><span class="hl">참정권, 청구권, 사회권</span></td></tr>
+<tr><td>수단적 / 절차적 / 도구적 권리, 기본권 보장을 위한 기본권</td><td><span class="hl">청구권</span></td></tr>
+<tr><td>가장 최근에 등장 / 인간다운 삶의 보장(급부) 요구 / 현대 복지 국가 헌법에서부터 보장 / 바이마르 헌법에서 최초 보장 / 자본주의 문제점 해결 과정에서 등장 / 실질적 평등 실현 목적</td><td><span class="hl">사회권</span></td></tr>
+<tr><td>법률에 의해 제한될 수 있는 권리</td><td><span class="hl">모두 해당</span></td></tr>
+</table></div>
+
+<h2>2. 기본권의 제한과 한계<span class="imp">중요</span></h2>
+<p><b>의미</b> — 헌법에 기본권 제한의 목적, 방법, 형식, 내용상 한계를 명시함</p>
+<div class="src"><span class="t">조문[12] 헌법 제37조 ②</span>
+<p>국민의 모든 자유와 권리는 <span class="hl">국가안전보장·질서유지 또는 공공복리(목적상의 한계)</span>를 위하여 <span class="hl">필요한 경우에 한하여(방법상의 한계)</span> <span class="hl">법률로써 제한(형식상의 한계)</span>할 수 있으며, 제한하는 경우에도 <span class="hl">자유와 권리의 본질적인 내용을 침해할 수 없다(내용상의 한계)</span>.</p>
+<p class="note">✎ 국가안전보장·질서유지·공공복리 = 공익</p></div>
+<h3>방법상의 한계 (<span class="num">⑦</span> <span class="ans">과잉금지의 원칙 = 비례의 원칙</span>⁵⁾)</h3>
+<p class="note">← 4가지 중 어느 하나에라도 저촉되면 위헌</p>
+<div class="row"><b class="hl">목적의 정당성</b><div>국민의 <span class="hl">기본권을 제한하려는 목적이 정당</span>해야 함</div></div>
+<div class="row"><b>방법의 적정성</b><div>(<span class="num">⑧</span> <span class="ans">수단의 적합성</span>) 목적을 달성하는 데 <span class="hl">수단이 효과적이고 적절해야 함</span></div></div>
+<div class="row"><b class="hl">피해의 최소성</b><div><span class="hl">피해가 최소한도에 그쳐야 함</span></div></div>
+<div class="row"><b class="hl">법익의 균형성</b><div>보호하려는 공익과 침해되는 사익이 균형을 이루거나 <span class="hl">공익이 사익보다 더 커야 함</span></div></div>
+<div class="foot"><p>5) 비례의 원칙: 기본권 제한의 목적과 수단 사이에 적정한 비례 관계가 유지되어야 한다는 원칙</p></div>
+
+<div class="src"><span class="t">자료[12] 기본권의 제한 기출문제 사례 분석 <span class="imp">중요</span></span>
+<p>병역법은 사회 복무 요원이 정당이나 그 밖의 정치 단체에 가입하는 등 정치적 목적을 지닌 행위를 하면 경고 처분하고, 경고 횟수마다 복무를 5일 연장하도록 규정. 갑이 헌법 소원을 냄.</p>
+<p>헌법재판소: “정치적 중립성을 유지하며 업무 전념성을 보장하고자 하는 (㉠ <span class="ans">목적의 정당성</span>)은 인정되나, 정치적 중립성 보장과 <span class="hl">아무런 관련이 없는</span> 단체에 가입하는 등의 사회적 활동까지 금지하므로 (㉡ <span class="ans">방법의 적정성</span>)이 인정되지 않는다. 또한 … 이를 전면적으로 금지하는 것은 그 <span class="hl">정당성이 인정될 수 없어</span> (㉢ <span class="ans">피해의 최소성</span>)에 위배되고, 나아가 … 침해되는 <span class="hl">사익</span>이 <span class="hl">위 공익</span>에 비하여 결코 가볍다고 볼 수 없으므로, (<span class="star">★</span>㉣ <span class="ans">법익의 균형성</span>)에도 위반된다.”</p></div>
+<div class="tip"><b>구별 팁</b> — 괄호 앞에 나온 이유를 봐.
+<p>ㆍ“관련이 없다”, “효과가 없다” → <b>방법의 적정성</b></p>
+<p>ㆍ“전면적으로”, “일률적으로”, “다른 방법이 있다” → <b>피해의 최소성</b></p>
+<p>ㆍ“사익이 공익보다 가볍지 않다” → <b>법익의 균형성</b></p></div>
+
+<h2>3. 인권 보장을 위한 제도적 장치</h2>
+<div class="mod"><h3><span class="hl">국민 주권 원리</span></h3>
+<p>ㆍ(<span class="num">⑨</span> <span class="ans">주권</span>⁶⁾)이 국민에게 있다는 원리 (<span class="hl">국민이 국가의 주인이라는 의미</span>)</p>
+<p>ㆍ<span class="hl">선거, 국민 투표</span> <span class="note" style="display:inline">✎ → 참정권</span></p>
+<p style="margin-top:6px;font-size:14.5px">헌법 제1조 ① 대한민국은 민주공화국이다. ② <span class="hl">대한민국의 주권은 국민에게 있고</span>, <span class="hl">모든 권력은 국민으로부터 나온다.</span></p></div>
+<div class="foot" style="margin-top:0"><p>6) 주권: 국가의 의사를 최종적으로 결정하는 권력. 대내적으로는 최고의 절대적 힘을 가지고, 대외적으로는 자주적 독립성을 가진다.</p></div>
+
+<div class="mod"><h3><span class="hl">권력 분립 제도</span></h3>
+<p>ㆍ<span class="hl">국가 권력을 입법, 사법, 행정으로 나눠 서로 견제하고 균형을 이루게 하여 국가 권력 남용을 방지</span>하고자 함</p>
+<p>ㆍ<span class="hl">3권 분립: 입법권(국회), 행정권(정부), 사법권(법원)</span></p>
+<span class="k">자료[13] 견제 관계 (화살표 = 견제 대상)</span>
+<div class="arrows">
+<p><b>입법부(국회) → 행정부(정부)</b> 국정 감사권, 탄핵 소추권</p>
+<p><b>행정부(정부) → 입법부(국회)</b> 법률안 거부권</p>
+<p><b>입법부(국회) → 사법부(법원)</b> 대법원장 임명 동의권</p>
+<p><b>사법부(법원) → 입법부(국회)</b> 위헌 법률 심사 제청권</p>
+<p><b>행정부(정부) → 사법부(법원)</b> 대법원장 임명권, 사면권</p>
+<p><b>사법부(법원) → 행정부(정부)</b> 명령·규칙 심사권</p></div>
+<span class="k">자료[14] 법원의 심급제도 (3심제)</span>
+<div class="courts">
+<div><b>경한 사건</b><p>1심 <span class="hl">지방 법원 단독 판사</span></p><p class="ar">↓ <span class="hl">항소</span>, 항고</p><p>2심 <span class="hl">지방 법원 합의부</span></p><p class="ar">↓ <span class="hl">상고</span>, 재항고</p><p>3심 <span class="hl">대법원</span></p></div>
+<div><b>중한 사건</b><p>1심 <span class="hl">지방 법원 합의부</span></p><p class="ar">↓ <span class="hl">항소</span>, 항고</p><p>2심 <span class="hl">고등 법원</span></p><p class="ar">↓ <span class="hl">상고</span>, 재항고</p><p>3심 <span class="hl">대법원</span></p></div></div>
+<p style="margin-top:8px">ㆍ<b>항소</b>: 제1심 판결에 불복하여 제2심에 소를 제기<br>ㆍ<b>상고</b>: 제2심 판결에 불복하여 대법원에 소를 제기<br>ㆍ<b>항고</b>: 판결이 아닌 결정 또는 명령에 대하여 법원에 이의 제기<br>ㆍ<b>재항고</b>: 판결이 아닌 결정 또는 명령에 대하여 대법원에 이의 제기</p></div>
+
+<div class="mod"><h3><span class="hl">법치주의</span></h3><p>ㆍ<span class="hl">법률에 근거한 공권력 행사만을 허용</span> ← 국가 권력의 자의적인 행사 방지</p></div>
+<div class="mod"><h3><span class="hl">민주적 선거 제도</span></h3><p>ㆍ국민이 국민의 대표를 선출</p><p>ㆍ<span class="hl">보통·평등·직접·비밀 선거의 보장</span></p></div>
+<div class="mod"><h3><span class="hl">복수 정당제</span></h3><p>ㆍ<span class="hl">여러 정당의 자유로운 활동</span>을 통해 의견 다양성 보장</p></div>
+
+<h3>기본권 구제 제도</h3>
+<p>ㆍ인권 침해받은 국민이 법원의 재판이나 헌법재판소의 헌법 소원 등을 통해 권리 구제 가능</p>
+<div class="src"><span class="t">자료[15] 헌법재판소 <span class="imp">중요</span></span>
+<p><b>지위</b> 헌법 수호 기관, 기본권 보장 기관, 독립 기관(법원과 다른 독립 기관임)</p>
+<p><b>구성</b> 재판관 9인 — 3인(국회 선출), 3인(대법원장 지명), 3인(대통령 지명) / 9인 모두 대통령이 임명(형식적 임명)</p>
+<p><b>권한</b> 위헌법률심판(헌가), 탄핵심판(헌나), 정당해산심판(헌다), 권한쟁의심판(헌라), 헌법소원심판(권리구제형(헌마), 위헌심사형(헌바))</p>
+<p><b>결정</b> 재판관 7명 이상 출석 + 6명 이상 찬성 [권한쟁의심판만 7명 이상 출석 + 과반수 찬성]</p></div>
+
+<div class="mod"><h3><span class="hl">위헌법률심판</span></h3>
+<p>의미: <span class="hl">소송 당사자의 신청을 받아</span> 또는 <span class="hl">법원 직권</span>으로 법원이 심판을 제청하여 법원의 재판 중 적용되는 법률이 헌법에 위반되는지의 여부를 헌법재판소가 심판하는 제도</p>
+<span class="k">청구권자</span><p>(<span class="num">⑩</span> <span class="ans">법원의 제청</span>)</p>
+<p class="flow">① <span class="hl">국민이 법원에 위헌법률심판 제청신청</span> → <span class="hl">법원이 제청신청 인용</span> → <span class="hl">법원이 위헌법률심판 제청</span><br>② <span class="hl">법원이 위헌법률심판 제청</span> (직권)</p>
+<p><span class="hl">재판의 전제성 필요</span>: <span class="hl">법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우</span></p>
+<p style="font-size:14.5px;margin-top:6px">헌법 제107조 ① <span class="hl">법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우</span>에는 <span class="hl">법원은 헌법재판소에 제청</span>하여 그 심판에 의하여 재판한다.<br>헌법재판소법 제41조 ① … 당해 사건을 담당하는 <span class="hl">법원은 직권 또는 당사자의 신청에 의한 결정</span>으로 <span class="hl">헌법재판소에 위헌 여부 심판을 제청</span>한다.</p></div>
+
+<div class="mod"><h3><span class="hl">위헌심사형 헌법소원</span></h3>
+<p>의미: <span class="star">★</span> <span class="hl">위헌 법률 심판에서 당사자의 제청 신청을 법원이 기각한 때</span> 그 신청을 한 당사자가 직접 헌법재판소에 그 법률의 위헌 여부를 물으면, 헌법 재판소가 위헌 여부를 심판하는 제도</p>
+<span class="k">청구권자</span><p>(<span class="num">⑪</span> <span class="ans">국민의 청구</span>)</p>
+<p class="flow"><span class="hl">국민이 법원에 위헌법률심판 제청신청</span> → <span class="hl">법원이 제청신청 기각</span> → <span class="hl">국민이 위헌심사형 헌법소원 청구</span></p>
+<p><span class="hl">재판의 전제성 필요</span>: <span class="hl">법률이 헌법에 위반되는 여부가 재판의 전제가 된 경우</span></p>
+<p style="font-size:14.5px;margin-top:6px">헌법재판소법 제68조 ② <span class="hl">법률의 위헌 여부 심판의 제청신청이 기각된 때</span>에는 <span class="hl">그 신청을 한 당사자</span>는 <span class="hl">헌법재판소에 헌법소원심판을 청구</span>할 수 있다. 이 경우 그 당사자는 당해 사건의 소송절차에서 동일한 사유를 이유로 다시 위헌 여부 심판의 제청을 신청할 수 없다.</p></div>
+
+<div class="mod"><h3><span class="hl">권리구제형 헌법소원</span></h3>
+<p>의미: <span class="hl">공권력의 행사 또는 불행사</span>로 <span class="hl">기본권을 침해당한 사람</span>이 헌법재판소에 침해 여부의 판단을 청구하면, 헌법재판소가 그 침해 여부를 판단하는 제도</p>
+<span class="k">청구권자</span><p>(<span class="num">⑫</span> <span class="ans">국민의 청구</span>)</p>
+<p class="flow"><span class="hl">공권력의 행사 또는 불행사로 기본권 침해</span> → <span class="hl">다른 구제 절차 거침</span> → <span class="hl">국민이 권리구제형 헌법소원 청구</span></p>
+<p><span class="hl">보충성 필요(최후의 수단)</span>⁷⁾: <span class="hl">다른 기본권 구제 절차를 모두 거치고도 기본권이 침해된 경우</span>에만 청구 가능</p>
+<p style="font-size:14.5px;margin-top:6px">헌법재판소법 제68조 ① <span class="hl">공권력의 행사 또는 불행사</span>로 인하여 헌법상 보장된 기본권을 침해받은 자는 <span class="hl">법원의 재판을 제외</span>하고는 헌법재판소에 헌법소원심판을 청구할 수 있다. 다만, 다른 법률에 구제절차가 있는 경우에는 <span class="hl">그 절차를 모두 거친 후가 아니면 청구할 수 없다.</span></p></div>
+<div class="foot"><p>7) 일상생활에서 기본권을 침해당한 경우, 국가인권위원회와 같은 인권 보호 기관에 도움을 요청하거나 법원의 재판으로 구제받을 수 있다. 그러나 법률에 정해진 절차를 모두 거쳤음에도 구제받지 못한 경우에는 헌법 재판소에 권리 구제형 헌법 소원을 요청할 수 있다.</p></div>
+
+<div class="tip"><b>✎ 필기: 기본권 구제 제도 흐름</b>
+<p><b>예) “군대 안 가!”</b> → 병역법 위반으로 재판 중 → “이 법률(병역법)이 헌법(신체의 자유)에 위반된다!”<br>⇒ 재판에 적용되는 법률이 헌법에 위반되는지 여부 판단</p>
+<p>ㆍ국민 → ① 법원에 제청 신청 → 법원이 인용 → 법원이 헌법재판소에 제청 = <b>위헌법률심판</b> (법원 직권으로도 가능)</p>
+<p>ㆍ② 법원이 제청 신청 기각 → ③ 국민이 헌법재판소에 청구 = <b>위헌심사형 헌법소원</b></p>
+<p><b>예) 공무원이 주소를 잘못 등록</b> → 복지 혜택 못 받음 → 사회권 침해<br>ㆍ법률 또는 공권력 행사로 기본권 침해 → 다른 구제 절차 모두 거친 후(최후의 수단 = 보충성) → 국민이 헌법재판소에 청구 = <b>권리구제형 헌법소원</b></p></div>
+</div>
+
 </section>
 
 <!-- ===================== 문제 ===================== -->
@@ -417,10 +631,122 @@ const Q = [
  c:["1개","2개","3개","4개"],a:2,ex:"ㄹ: 문화권은 문화 기본법 제4조. 헌법 제17조는 잊힐 권리"}
 ];
 
+Q.forEach(q=>q.u=1);
+const Q2 = [
+/* ===== 하 ===== */
+{id:"b-h1",lv:"하",t:"mc",q:"헌법의 의미로 옳은 것은?",c:["지방 의회가 제정하는 자치 법규","국가의 통치 조직과 통치 작용의 원리를 규정하고, 국민의 기본권을 보장하는 최고법","대통령이 내리는 명령","부의 장관이 내리는 명령"],a:1,ex:"헌법 = 통치 조직·작용의 원리 규정 + 국민의 기본권 보장하는 최고법"},
+{id:"b-h2",lv:"하",t:"sa",q:"국가의 모든 권력이 헌법에 따르도록 하여 국가 권력의 자의적 행사를 방지하고, 국민의 인권을 실질적으로 보장하는 정치 원리는?",a:["입헌주의"],ex:"입헌주의 (각주 1)"},
+{id:"b-h3",lv:"하",t:"mc",q:"상위법 우선의 원칙에 따른 법의 순서로 옳은 것은?",c:["헌법 > 명령 > 법률 > 조례 > 규칙","법률 > 헌법 > 명령 > 규칙 > 조례","헌법 > 법률 > 명령 > 조례 > 규칙","헌법 > 법률 > 조례 > 명령 > 규칙"],a:2,ex:"헌법 > 법률(국회) > 명령(대통령령·총리령·부령) > 조례(지방 의회) > 규칙(지방자치단체장)"},
+{id:"b-h4",lv:"하",t:"ox",q:"하위법이 상위법에 모순되거나 저촉되면 그 효력은 부인된다.",a:"O",ex:"상위법 우선의 원칙"},
+{id:"b-h5",lv:"하",t:"mc",q:"조례를 제정하는 곳은?",c:["국회","지방 의회","지방자치단체장","대통령"],a:1,ex:"조례 = 지방 의회 / 규칙 = 지방자치단체장"},
+{id:"b-h6",lv:"하",t:"sa",q:"부의 장관이 내리는 명령을 무엇이라고 하는가?",a:["부령"],ex:"부령 (각주 2)"},
+{id:"b-h7",lv:"하",t:"mc",q:"헌법 최고 이념이자 모든 개별적인 기본권의 내용을 담은 포괄적 권리는?",c:["평등권","참정권","인간의 존엄과 가치 및 행복 추구권","청구권"],a:2,ex:"① 헌법 최고 이념 = 인간의 존엄과 가치 및 행복 추구권 (헌법 제10조)"},
+{id:"b-h8",lv:"하",t:"mc",q:"역사적으로 가장 오래된 기본권은?",c:["사회권","자유권","청구권","참정권"],a:1,ex:"가장 오래된 권리 = 자유권 / 가장 최근 = 사회권"},
+{id:"b-h9",lv:"하",t:"mc",q:"국가 권력의 간섭이나 침해를 받지 않고 생활할 권리로, 소극적·방어적 권리는?",c:["자유권","사회권","참정권","청구권"],a:0,ex:"② 소극적, 방어적 권리 = 자유권"},
+{id:"b-h10",lv:"하",t:"mc",q:"국가 의사 결정에 주체적으로 참여할 수 있는 능동적 권리는?",c:["청구권","자유권","참정권","평등권"],a:2,ex:"④ 능동적 권리 = 참정권"},
+{id:"b-h11",lv:"하",t:"mc",q:"절차적, 수단적, 도구적 권리라고 불리는 기본권은?",c:["사회권","청구권","자유권","평등권"],a:1,ex:"⑤ 청구권 = 기본권 보장을 위한 기본권"},
+{id:"b-h12",lv:"하",t:"mc",q:"바이마르 헌법에서 최초로 보장된 기본권은?",c:["자유권","평등권","참정권","사회권"],a:3,ex:"사회권 — 현대 복지 국가 헌법에서부터 보장"},
+{id:"b-h13",lv:"하",t:"mc",q:"다른 기본권 보장의 전제 조건이 되는 본질적 권리는?",c:["평등권","청구권","참정권","사회권"],a:0,ex:"★ 평등권 = 다른 기본권 보장의 전제 조건, 본질적 권리"},
+{id:"b-h14",lv:"하",t:"sa",q:"평등권은 (     ) 없이 성별, 종교, 사회적 신분 등에 의해 차별받지 않을 권리이다. 빈칸은?",a:["합리적이유"],ex:"③ 합리적 이유 — ‘같은 것은 같게, 다른 것은 다르게’"},
+{id:"b-h15",lv:"하",t:"mc",q:"청원권은 어떤 기본권에 속하는가?",c:["자유권","참정권","청구권","사회권"],a:2,ex:"청구권: 청원권, 재판 청구권, 형사 보상 청구권, 국가 배상 청구권, 범죄 피해자 구조 청구권"},
+{id:"b-h16",lv:"하",t:"mc",q:"선거권은 어떤 기본권에 속하는가?",c:["참정권","청구권","사회권","자유권"],a:0,ex:"참정권: 국민 투표권, 선거권, 공무 담임권"},
+{id:"b-h17",lv:"하",t:"mc",q:"근로 3권은 어떤 기본권에 속하는가?",c:["자유권","청구권","사회권","평등권"],a:2,ex:"사회권: 교육권, 근로권, 최저임금, 근로 3권, 사회 보장 제도 등"},
+{id:"b-h18",lv:"하",t:"mc",q:"사생활의 비밀과 자유는 어떤 기본권에 속하는가?",c:["사회권","자유권","참정권","청구권"],a:1,ex:"자유권 종류 — 헌법 제17조"},
+{id:"b-h19",lv:"하",t:"sa",q:"헌법 제1조 ②항 ‘대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다’가 나타내는 원리는?",a:["국민주권원리","국민주권","국민주권주의"],ex:"국민 주권 원리 — ⑨ 주권이 국민에게 있다는 원리"},
+{id:"b-h20",lv:"하",t:"mc",q:"3권 분립의 연결로 옳은 것은?",c:["입법권 - 정부","행정권 - 법원","사법권 - 국회","입법권 - 국회"],a:3,ex:"입법권(국회), 행정권(정부), 사법권(법원)"},
+{id:"b-h21",lv:"하",t:"sa",q:"제1심 판결에 불복하여 제2심에 소를 제기하는 것은?",a:["항소"],ex:"항소: 1심 → 2심 / 상고: 2심 → 대법원"},
+{id:"b-h22",lv:"하",t:"sa",q:"제2심 판결에 불복하여 대법원에 소를 제기하는 것은?",a:["상고"],ex:"상고"},
+{id:"b-h23",lv:"하",t:"mc",q:"법원의 판결이 아닌 결정 또는 명령에 대하여 법원에 이의를 제기하는 것은?",c:["항소","상고","항고","재항고"],a:2,ex:"항고: 법원에 / 재항고: 대법원에"},
+{id:"b-h24",lv:"하",t:"ox",q:"헌법재판소 재판관은 모두 9인이다.",a:"O",ex:"국회 선출 3 + 대법원장 지명 3 + 대통령 지명 3"},
+{id:"b-h25",lv:"하",t:"mc",q:"법률에 근거한 공권력 행사만을 허용하여 국가 권력의 자의적인 행사를 방지하는 것은?",c:["복수 정당제","법치주의","권력 분립","국민 투표"],a:1,ex:"법치주의"},
+{id:"b-h26",lv:"하",t:"mc",q:"민주적 선거 제도의 원칙으로 옳은 것은?",c:["제한·평등·직접·비밀","보통·차등·간접·공개","보통·평등·직접·비밀","보통·평등·간접·공개"],a:2,ex:"보통·평등·직접·비밀 선거의 보장"},
+{id:"b-h27",lv:"하",t:"mc",q:"여러 정당의 자유로운 활동을 통해 의견 다양성을 보장하는 제도는?",c:["복수 정당제","법치주의","3심제","입헌주의"],a:0,ex:"복수 정당제"},
+
+/* ===== 중 ===== */
+{id:"b-m1",lv:"중",t:"mc",q:"헌법 제37조 ②에서 ‘목적상의 한계’에 해당하는 것은?",c:["국가안전보장·질서유지 또는 공공복리","필요한 경우에 한하여","법률로써","본질적인 내용을 침해할 수 없다"],a:0,ex:"목적상 = 국가안전보장·질서유지·공공복리(공익) / 방법상 = 필요한 경우에 한하여 / 형식상 = 법률로써 / 내용상 = 본질적 내용 침해 금지"},
+{id:"b-m2",lv:"중",t:"mc",q:"헌법 제37조 ②에서 ‘형식상의 한계’에 해당하는 것은?",c:["공공복리를 위하여","필요한 경우에 한하여","법률로써 제한","본질적인 내용을 침해할 수 없다"],a:2,ex:"형식상의 한계 = 법률로써 제한"},
+{id:"b-m3",lv:"중",t:"mc",q:"헌법 제37조 ②에서 ‘내용상의 한계’에 해당하는 것은?",c:["질서유지를 위하여","필요한 경우에 한하여","법률로써","자유와 권리의 본질적인 내용을 침해할 수 없다"],a:3,ex:"내용상의 한계"},
+{id:"b-m4",lv:"중",t:"mc",q:"‘필요한 경우에 한하여’(방법상의 한계)와 관련된 원칙은?",c:["상위법 우선의 원칙","과잉금지의 원칙","보충성의 원칙","재판의 전제성"],a:1,ex:"⑦ 방법상의 한계 = 과잉금지의 원칙 = 비례의 원칙"},
+{id:"b-m5",lv:"중",t:"sa",q:"과잉금지의 원칙을 다른 말로 ‘○○의 원칙’이라고 한다. ○○은?",a:["비례","비례의원칙"],ex:"비례의 원칙: 기본권 제한의 목적과 수단 사이에 적정한 비례 관계 유지"},
+{id:"b-m6",lv:"중",t:"mc",q:"과잉금지 원칙 중 ‘피해가 최소한도에 그쳐야 함’은?",c:["목적의 정당성","방법의 적정성","피해의 최소성","법익의 균형성"],a:2,ex:"피해의 최소성"},
+{id:"b-m7",lv:"중",t:"mc",q:"‘보호하려는 공익과 침해되는 사익이 균형을 이루거나 공익이 사익보다 더 커야 함’은?",c:["목적의 정당성","방법의 적정성","피해의 최소성","법익의 균형성"],a:3,ex:"법익의 균형성"},
+{id:"b-m8",lv:"중",t:"sa",q:"과잉금지 원칙 중 ‘방법의 적정성’의 다른 이름은 ‘수단의 ○○○’이다. ○○○은?",a:["적합성","수단의적합성"],ex:"⑧ 수단의 적합성 — 목적 달성에 수단이 효과적이고 적절해야 함"},
+{id:"b-m9",lv:"중",t:"ox",q:"과잉금지 원칙의 4가지 요소 중 어느 하나라도 저촉되면 위헌이다.",a:"O",ex:"4가지 중 어느 하나에라도 저촉되면 위헌"},
+{id:"b-m10",lv:"중",t:"mc",q:"적극적 권리이면서 국가의 존재를 전제로 하는 권리로만 묶인 것은?",c:["자유권, 평등권, 참정권","참정권, 청구권, 사회권","자유권, 청구권, 사회권","평등권, 참정권, 사회권"],a:1,ex:"자료[11]: 적극적 권리 / 국가의 존재 전제 = 참정권, 청구권, 사회권"},
+{id:"b-m11",lv:"중",t:"mc",q:"포괄적 권리로 옳게 묶인 것은?",c:["자유권, 평등권","참정권, 사회권","청구권, 참정권","사회권, 청구권"],a:0,ex:"포괄적 권리 = 자유권, 평등권"},
+{id:"b-m12",lv:"중",t:"mc",q:"사회권에 해당하지 않는 것은?",c:["교육을 받을 권리","최저임금","환경권","청원권"],a:3,ex:"청원권은 청구권"},
+{id:"b-m13",lv:"중",t:"mc",q:"청구권에 해당하지 않는 것은?",c:["국가 배상 청구권","형사 보상 청구권","범죄 피해자 구조 청구권","공무 담임권"],a:3,ex:"공무 담임권은 참정권"},
+{id:"b-m14",lv:"중",t:"mc",q:"공무 담임권이 포괄하는 것은?",c:["선거권 + 국민 투표권","피선거권 + 공직 취임권","청원권 + 재판 청구권","선거권 + 청원권"],a:1,ex:"공무 담임권 = 피선거권 + 공직 취임권 (각주 4)"},
+{id:"b-m15",lv:"중",t:"ox",q:"헌법 제29조에 따르면 공무원의 직무상 불법행위로 국가가 배상하면 공무원 자신의 책임은 면제된다.",a:"X",ex:"공무원 자신의 책임은 면제되지 아니한다"},
+{id:"b-m16",lv:"중",t:"mc",q:"헌법재판소 재판관 구성으로 옳은 것은?",c:["국회 선출 3, 대법원장 지명 3, 대통령 지명 3","국회 선출 5, 대통령 지명 4","대법원장 지명 9","국회 선출 3, 국무총리 지명 3, 대통령 지명 3"],a:0,ex:"9인 모두 대통령이 임명(형식적 임명)"},
+{id:"b-m17",lv:"중",t:"mc",q:"헌법재판소의 일반적인 결정 정족수는?",c:["재판관 7명 이상 출석 + 과반수 찬성","재판관 9명 출석 + 6명 이상 찬성","재판관 7명 이상 출석 + 6명 이상 찬성","재판관 5명 이상 출석 + 과반수 찬성"],a:2,ex:"권한쟁의심판만 7명 이상 출석 + 과반수 찬성"},
+{id:"b-m18",lv:"중",t:"mc",q:"헌법재판소 사건 부호의 연결로 옳지 않은 것은?",c:["위헌법률심판 - 헌가","탄핵심판 - 헌나","권리구제형 헌법소원 - 헌바","권한쟁의심판 - 헌라"],a:2,ex:"권리구제형 = 헌마 / 위헌심사형 = 헌바 / 정당해산심판 = 헌다"},
+{id:"b-m19",lv:"중",t:"mc",q:"위헌법률심판의 청구권자는?",c:["국민의 청구","법원의 제청","국회의 의결","대통령의 요청"],a:1,ex:"⑩ 법원의 제청 / 위헌심사형·권리구제형은 국민의 청구"},
+{id:"b-m20",lv:"중",t:"mc",q:"위헌심사형 헌법소원을 청구할 수 있는 경우는?",c:["법원이 위헌법률심판 제청신청을 기각한 때","법원이 제청신청을 인용한 때","공무원이 직무상 불법행위를 한 때","국회가 법률안을 거부한 때"],a:0,ex:"★ 당사자의 제청 신청을 법원이 기각 → 그 당사자가 직접 청구"},
+{id:"b-m21",lv:"중",t:"mc",q:"권리구제형 헌법소원에 필요한 요건은?",c:["재판의 전제성","보충성(최후의 수단)","법원의 제청","국회의 동의"],a:1,ex:"다른 구제 절차를 모두 거치고도 침해된 경우에만 청구"},
+{id:"b-m22",lv:"중",t:"mc",q:"행정부가 입법부를 견제하는 권한은?",c:["국정 감사권","법률안 거부권","명령·규칙 심사권","위헌 법률 심사 제청권"],a:1,ex:"입법부→행정부: 국정 감사권, 탄핵 소추권 / 행정부→입법부: 법률안 거부권"},
+{id:"b-m23",lv:"중",t:"mc",q:"사법부가 행정부를 견제하는 권한은?",c:["사면권","대법원장 임명 동의권","명령·규칙 심사권","탄핵 소추권"],a:2,ex:"사법부→행정부: 명령·규칙 심사권"},
+{id:"b-m24",lv:"중",t:"mc",q:"입법부가 사법부를 견제하는 권한은?",c:["대법원장 임명 동의권","대법원장 임명권","법률안 거부권","위헌 법률 심사 제청권"],a:0,ex:"입법부→사법부: 대법원장 임명 동의권 / 행정부→사법부: 대법원장 임명권, 사면권"},
+{id:"b-m25",lv:"중",t:"mc",q:"경한 사건에서 2심을 담당하는 곳은?",c:["고등 법원","지방 법원 단독 판사","지방 법원 합의부","대법원"],a:2,ex:"경한 사건: 단독 판사(1심) → 지방 법원 합의부(2심) → 대법원 / 중한 사건: 합의부 → 고등 법원 → 대법원"},
+{id:"b-m26",lv:"중",t:"ox",q:"헌법재판소는 법원에 소속된 기관이다.",a:"X",ex:"헌법재판소는 법원과 다른 독립 기관"},
+{id:"b-m27",lv:"중",t:"mc",q:"사회권이 목적으로 하는 평등은?",c:["형식적 평등만","실질적 평등 (기회의 평등 + 어느 정도의 결과의 평등)","결과의 완전한 평등","법 앞의 평등만"],a:1,ex:"사회권 = 실질적 평등 실현 목적"},
+{id:"b-m28",lv:"중",t:"mc",q:"헌법 제31조 ②에 따라 보호하는 자녀에게 받게 할 의무가 있는 교육은?",c:["초등교육만","초등교육과 법률이 정하는 교육(중학교)","고등학교까지","대학교까지"],a:1,ex:"적어도 초등교육과 법률이 정하는 교육(중학교)"},
+{id:"b-m29",lv:"중",t:"ox",q:"자유권은 헌법에 열거되지 않더라도 보장되는 포괄적 권리이다.",a:"O",ex:"★ 헌법에 써 있지 않아도 보장 O"},
+{id:"b-m30",lv:"중",t:"ox",q:"법률에 의해 제한될 수 있는 기본권은 자유권뿐이다.",a:"X",ex:"법률에 의해 제한될 수 있는 권리 = 모두 해당"},
+
+/* ===== 상 ===== */
+{id:"b-s1",lv:"상",t:"mc",q:"다음 판례에서 침해되었다고 본 기본권으로 옳은 것은?",box:"<p>수형자로 하여금 형사재판 출석 시 아무런 예외 없이 사복 착용을 금지하고 재소자용 의류를 입도록 하여 인격적인 모욕감과 수치심 속에서 재판을 받도록 하는 것은 유죄의 선입견을 줄 수 있고…</p>",c:["참정권, 사회권","공정한 재판을 받을 권리, 인격권, 행복추구권","선거권, 공무담임권","교육권, 근로권"],a:1,ex:"수형자 사복 착용 판례 → 공정한 재판을 받을 권리, 인격권(인간의 존엄과 가치), 행복추구권 침해"},
+{id:"b-s2",lv:"상",t:"mc",q:"다음 판례에서 헌법재판소가 침해되었다고 판단한 것은?",box:"<p>유치장 내 설치된 화장실은 차폐시설이 불충분하여 신체부위 등이 노출되거나 경찰관들에게 관찰될 수 있고 냄새가 유출되는 개방적 구조를 가졌다. 미결수용자들에게 이와 같은 구조의 화장실 사용을 강제하는 것…</p>",c:["헌법 제10조의 인간의 존엄과 가치로부터 유래하는 인격권","헌법 제24조 선거권","헌법 제31조 교육권","헌법 제26조 청원권"],a:0,ex:"유치장 화장실 판례 → 인격권 침해"},
+{id:"b-s3",lv:"상",t:"mc",q:"다음 판례에서 제한된다고 본 기본권은?",box:"<p>자기낙태죄 조항은 임신기간 전체를 통틀어 모든 낙태를 전면적·일률적으로 금지하고, 이를 위반할 경우 형벌을 부과함으로써 임신의 유지·출산을 강제하고 있으므로…</p>",c:["임신한 여성의 자기결정권(인간의 존엄과 가치)","공무담임권","재판 청구권","사회 보장 수급권"],a:0,ex:"자기낙태죄 판례 → 자기결정권 제한"},
+{id:"b-s4",lv:"상",t:"mc",q:"간통죄 판례에 대한 설명으로 옳은 것은?",c:["간통죄는 평등권을 침해하여 위헌이다.","간통죄는 과잉금지원칙에 위배하여 성적 자기결정권 및 사생활의 비밀과 자유를 침해한다.","간통죄는 공정한 재판을 받을 권리를 침해한다.","간통죄는 합헌이다."],a:1,ex:"자료[5] — 혼인·가정의 유지는 형벌로 강제할 수 없음, 민사상 제도로 더 효과적"},
+{id:"b-s5",lv:"상",t:"mc",q:"경찰관이 영장 없이 불법하게 체포하려 하자 이를 면하려고 반항하다 경찰관에게 상해를 가한 경우에 대한 판례의 입장과 관련 조문으로 옳은 것은?",c:["처벌 대상 — 헌법 제17조","정당방위에 해당 — 헌법 제12조(영장 제시)","정당방위에 해당 — 헌법 제31조","처벌 대상 — 헌법 제11조"],a:1,ex:"자료[6] 정당방위로 위법성 조각 / 헌법 제12조 ③ 체포 시 법관이 발부한 영장 제시"},
+{id:"b-s6",lv:"상",t:"mc",q:"제대군인 가산점 제도 판례에서 침해되었다고 본 기본권을 모두 고른 것은?",box:"<p>ㄱ. 평등권(헌법 제11조)<br>ㄴ. 공무담임권(헌법 제25조)<br>ㄷ. 사생활의 비밀과 자유<br>ㄹ. 교육을 받을 권리</p>",c:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ"],a:0,ex:"여성·제대군인 아닌 남성 부당 차별 → 평등권 / 여성·장애인 공직 취임권 제약 → 공무담임권(참정권)"},
+{id:"b-s7",lv:"상",t:"mc",q:"18세 미만 소년 당구장 출입 판례에서 침해될 수 있다고 본 기본권은?",c:["행복추구권의 한 내용인 일반적인 행동자유권","청원권","선거권","근로 3권"],a:0,ex:"자료[8] — 다른 운동 지망생과의 관계에서 평등의 원칙도 문제될 수 있음"},
+{id:"b-s8",lv:"상",t:"mc",q:"다음 판례에서 침해된 기본권과 그 기본권의 종류로 옳은 것은?",box:"<p>검사가 증인으로 채택된 수감자를 거의 매일 검사실로 하루 종일 소환하여 피고인측 변호인의 접근을 차단하고, 진술을 번복하도록 회유하고 압박한 행위…</p>",c:["인격권 - 자유권","공정한 재판을 받을 권리 - 청구권","공무담임권 - 참정권","인간다운 생활 - 사회권"],a:1,ex:"자료[9] → 공정한 재판을 받을 권리(재판 청구권) = 청구권"},
+{id:"b-s9",lv:"상",t:"mc",q:"과외 판례에서 과외금지 법률조항이 충족하지 못했다고 본 요소는?",c:["목적의 정당성, 방법의 적정성","피해의 최소성, 법익의 균형성","목적의 정당성만","재판의 전제성"],a:1,ex:"자료[10] — 피해의 최소성과 법익의 균형성 미충족 → 과잉금지 원칙 위배"},
+{id:"b-s10",lv:"상",t:"mc",q:"다음 ㉠~㉣에 들어갈 말로 바르게 짝지은 것은?",box:"<p>정치적 중립성을 유지하며 업무 전념성을 보장하고자 하는 (㉠)은 인정되나, 정치적 중립성 보장과 아무런 관련이 없는 단체 가입 등까지 금지하므로 (㉡)이 인정되지 않는다. 또한 이를 전면적으로 금지하는 것은 (㉢)에 위배되고, 침해되는 사익이 공익에 비하여 결코 가볍지 않으므로 (㉣)에도 위반된다.</p>",c:["㉠목적의 정당성 ㉡피해의 최소성 ㉢방법의 적정성 ㉣법익의 균형성","㉠목적의 정당성 ㉡방법의 적정성 ㉢피해의 최소성 ㉣법익의 균형성","㉠법익의 균형성 ㉡방법의 적정성 ㉢피해의 최소성 ㉣목적의 정당성","㉠방법의 적정성 ㉡목적의 정당성 ㉢법익의 균형성 ㉣피해의 최소성"],a:1,ex:"‘관련이 없다’ → 방법의 적정성 / ‘전면적으로’ → 피해의 최소성 / 사익 vs 공익 → 법익의 균형성"},
+{id:"b-s11",lv:"상",t:"mc",q:"헌법재판소가 “기본권 제한이 목적 달성과 아무런 관련이 없고 효과가 없다”고 판단했다면, 위배된 요소는?",c:["목적의 정당성","방법의 적정성","피해의 최소성","법익의 균형성"],a:1,ex:"구별 팁: ‘관련이 없다’, ‘효과가 없다’ → 방법의 적정성(수단의 적합성)"},
+{id:"b-s12",lv:"상",t:"mc",q:"“덜 침해적인 다른 방법이 있는데도 일률적으로 전면 금지했다”는 판단은 어떤 요소에 위배된 것인가?",c:["목적의 정당성","방법의 적정성","피해의 최소성","법익의 균형성"],a:2,ex:"구별 팁: ‘전면적으로’, ‘일률적으로’, ‘다른 방법이 있다’ → 피해의 최소성"},
+{id:"b-s13",lv:"상",t:"mc",q:"A~C 기본권에 대한 설명으로 옳은 것은?",box:"<p>A: 가장 오래된 권리, 소극적·방어적 권리<br>B: 기본권 보장을 위한 기본권, 절차적·수단적 권리<br>C: 인간다운 삶의 보장(급부)을 국가에 요구할 수 있는 권리</p>",c:["A는 국가의 존재를 전제로 하는 권리이다.","B는 바이마르 헌법에서 최초로 보장되었다.","C는 실질적 평등의 실현을 목적으로 한다.","A~C 중 법률로 제한할 수 없는 권리가 있다."],a:2,ex:"A 자유권, B 청구권, C 사회권. 국가의 존재 전제는 참정권·청구권·사회권, 바이마르는 사회권, 모든 기본권은 법률로 제한 가능"},
+{id:"b-s14",lv:"상",t:"mc",q:"다음 사례에서 갑이 선택할 수 있는 방법은?",box:"<p>갑은 병역법 위반으로 재판을 받던 중 병역법 조항이 헌법에 위반된다고 생각하여 법원에 위헌법률심판 제청신청을 하였으나, 법원은 이를 기각하였다.</p>",c:["권리구제형 헌법소원 청구","위헌심사형 헌법소원 청구","탄핵심판 청구","권한쟁의심판 청구"],a:1,ex:"제청신청 기각 → 그 신청을 한 당사자가 위헌심사형 헌법소원(헌바) 청구"},
+{id:"b-s15",lv:"상",t:"mc",q:"공무원의 잘못으로 복지 혜택을 받지 못해 사회권이 침해된 을이, 다른 구제 절차를 모두 거쳤는데도 구제받지 못했다. 을이 헌법재판소에 청구할 수 있는 것은?",c:["위헌법률심판","위헌심사형 헌법소원","권리구제형 헌법소원","정당해산심판"],a:2,ex:"공권력의 행사·불행사로 기본권 침해 + 보충성(최후의 수단) → 권리구제형 헌법소원(헌마)"},
+{id:"b-s16",lv:"상",t:"mc",q:"기본권 구제 제도에 대한 설명으로 옳은 것만 고른 것은?",box:"<p>ㄱ. 위헌법률심판은 법원 직권으로도 제청할 수 있다.<br>ㄴ. 위헌심사형 헌법소원은 재판의 전제성이 필요하다.<br>ㄷ. 권리구제형 헌법소원은 다른 구제 절차를 거치지 않고 바로 청구할 수 있다.<br>ㄹ. 권리구제형 헌법소원은 법원의 재판을 대상으로 청구한다.</p>",c:["ㄱ, ㄴ","ㄱ, ㄷ","ㄴ, ㄹ","ㄷ, ㄹ"],a:0,ex:"ㄷ: 보충성 필요 / ㄹ: 헌재법 제68조 ① ‘법원의 재판을 제외’하고 청구"},
+{id:"b-s17",lv:"상",t:"mc",q:"헌법재판소에 대한 설명으로 옳지 않은 것은?",c:["헌법 수호 기관이자 기본권 보장 기관이다.","재판관 9인은 모두 대통령이 임명한다.","권한쟁의심판은 7명 이상 출석에 과반수 찬성으로 결정한다.","재판관 9인은 모두 국회에서 선출한다."],a:3,ex:"국회 선출 3, 대법원장 지명 3, 대통령 지명 3"},
+{id:"b-s18",lv:"상",t:"mc",q:"권력 분립 제도의 견제 관계로 옳은 것은?",c:["법원 → 국회: 명령·규칙 심사권","정부 → 법원: 사면권","국회 → 정부: 법률안 거부권","정부 → 국회: 국정 감사권"],a:1,ex:"명령·규칙 심사권은 법원→정부, 법률안 거부권은 정부→국회, 국정 감사권은 국회→정부"},
+{id:"b-s19",lv:"상",t:"mc",q:"헌법 제12조(신체의 자유)에 대한 설명으로 옳은 것은?",c:["형사상 자기에게 불리한 진술도 강요할 수 있다.","체포·구속 시 법관이 발부한 영장을 제시해야 하나, 현행범·증거인멸 우려의 경우는 예외이다.","영장은 경찰관이 직접 발부한다.","법률에 의하지 않아도 심문할 수 있다."],a:1,ex:"적법한 절차에 따라 검사의 신청에 의하여 법관이 발부한 영장 제시 (현행범, 증거인멸 우려 예외)"},
+{id:"b-s20",lv:"상",t:"mc",q:"중한 사건의 심급 경로로 옳은 것은?",c:["지방 법원 단독 판사 → 지방 법원 합의부 → 대법원","지방 법원 합의부 → 고등 법원 → 대법원","지방 법원 합의부 → 지방 법원 단독 판사 → 대법원","고등 법원 → 지방 법원 합의부 → 대법원"],a:1,ex:"중한 사건: 지방 법원 합의부(1심) → 항소 → 고등 법원(2심) → 상고 → 대법원"},
+{id:"b-s21",lv:"상",t:"mc",q:"다음 중 옳은 설명의 개수는?",box:"<p>ㄱ. 평등권은 헌법에 열거되지 않아도 보장되는 권리로 정리된다.<br>ㄴ. 참정권은 국가의 존재를 전제로 하는 적극적 권리이다.<br>ㄷ. 사회권은 자본주의의 문제점을 해결하는 과정에서 등장했다.<br>ㄹ. 청구권은 역사적으로 가장 오래된 권리이다.</p>",c:["1개","2개","3개","4개"],a:2,ex:"ㄱ 자유권, (평등권) / ㄹ 가장 오래된 권리는 자유권"},
+{id:"b-s22",lv:"상",t:"mc",q:"국민 주권 원리와 관련된 설명으로 옳은 것은?",c:["주권은 대외적으로 다른 나라에 종속된다.","선거와 국민 투표를 통해 실현된다.","법률에 근거한 공권력 행사만 허용하는 원리이다.","국가 권력을 셋으로 나누는 원리이다."],a:1,ex:"국민 주권 원리 — 선거, 국민 투표. ③은 법치주의, ④는 권력 분립. 주권은 대외적으로 자주적 독립성"}
+];
+
+Q2.forEach(q=>{q.u=2;Q.push(q)});
+
+const UNITS={1:{n:"01 인권의 의미",t:"Ⅰ. 인권 보장과 헌법 / 01. 인권의 의미와 현대 사회의 인권"},
+             2:{n:"02 헌법의 역할",t:"Ⅰ. 인권 보장과 헌법 / 02. 인권 보장을 위한 헌법의 역할과 시민 참여"}};
+let unit=2;
+try{const s=+localStorage.getItem("tsb-unit");if(UNITS[s])unit=s}catch(e){}
+
 /* ---------- 저장 ---------- */
 const KEY="tsb-wrong-01";
 function loadWrong(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
 function saveWrong(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}}
+
+/* ---------- 단원 ---------- */
+const unitBox=document.getElementById("units");
+Object.keys(UNITS).forEach(k=>{
+  const b=document.createElement("button");b.textContent=UNITS[k].n;b.dataset.u=k;
+  b.onclick=()=>setUnit(+k);unitBox.appendChild(b);
+});
+function setUnit(u){
+  unit=u;try{localStorage.setItem("tsb-unit",u)}catch(e){}
+  unitBox.querySelectorAll("button").forEach(b=>b.classList.toggle("on",+b.dataset.u===u));
+  document.getElementById("unitTitle").textContent=UNITS[u].t;
+  document.querySelectorAll(".unit").forEach(d=>d.hidden=+d.dataset.u!==u);
+  renderLevels();
+  run.hidden=true;startBox.hidden=false;
+  if(document.getElementById("v-wrong").classList.contains("on"))renderWrong();
+}
+const unitQ=()=>Q.filter(q=>q.u===unit);
 
 /* ---------- 탭 ---------- */
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
@@ -447,15 +773,18 @@ document.getElementById("v-concept").addEventListener("click",e=>{
 const LV=[["전체","all"],["하","하"],["중","중"],["상","상"]];
 let pick="all";
 const lvBox=document.getElementById("levels");
-LV.forEach(([n,v])=>{
-  const b=document.createElement("button");
-  const cnt=v==="all"?Q.length:Q.filter(q=>q.lv===v).length;
-  b.innerHTML=`<b>${n}</b><span>${cnt}문제</span>`;
-  if(v===pick)b.classList.add("on");
-  b.onclick=()=>{pick=v;lvBox.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b))};
-  lvBox.appendChild(b);
-});
-document.getElementById("startBtn").onclick=()=>start(pick==="all"?Q:Q.filter(q=>q.lv===pick));
+function renderLevels(){
+  lvBox.innerHTML="";const list=unitQ();
+  LV.forEach(([n,v])=>{
+    const b=document.createElement("button");
+    const cnt=v==="all"?list.length:list.filter(q=>q.lv===v).length;
+    b.innerHTML=`<b>${n}</b><span>${cnt}문제</span>`;
+    if(v===pick)b.classList.add("on");
+    b.onclick=()=>{pick=v;lvBox.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b))};
+    lvBox.appendChild(b);
+  });
+}
+document.getElementById("startBtn").onclick=()=>{const l=unitQ();start(pick==="all"?l:l.filter(q=>q.lv===pick))};
 
 let pool=[],idx=0,score=0;
 const run=document.getElementById("quizRun"),startBox=document.getElementById("quizStart");
@@ -516,14 +845,17 @@ function end(){
 
 /* ---------- 오답 ---------- */
 function ansText(q){return q.t==="mc"?"①②③④"[q.a]+" "+q.c[q.a]:(Array.isArray(q.a)?q.a[0]:q.a)}
+function unitWrong(){const w=loadWrong();return unitQ().filter(q=>w.includes(q.id))}
 function renderWrong(){
-  const w=loadWrong(),list=Q.filter(q=>w.includes(q.id)),box=document.getElementById("wrongList");
+  const list=unitWrong(),box=document.getElementById("wrongList");
   document.getElementById("wrongRetry").disabled=!list.length;
-  if(!list.length){box.innerHTML=`<p class="empty">오답이 없어. 문제 탭에서 풀어 보면 틀린 문제가 여기 모여.</p>`;return}
+  if(!list.length){box.innerHTML=`<p class="empty">이 단원은 오답이 없어. 문제 탭에서 풀어 보면 틀린 문제가 여기 모여.</p>`;return}
   box.innerHTML=list.map(q=>`<div class="witem"><span class="lv ${q.lv}">${q.lv}</span><div class="q">${q.q}</div>${q.box?`<div class="box">${q.box}</div>`:""}<div class="a">정답: ${ansText(q)}<br>${q.ex}</div></div>`).join("");
 }
-document.getElementById("wrongRetry").onclick=()=>{const w=loadWrong();start(Q.filter(q=>w.includes(q.id)))};
-document.getElementById("wrongClear").onclick=()=>{if(confirm("오답 기록을 모두 지울까?")){saveWrong([]);renderWrong()}};
+document.getElementById("wrongRetry").onclick=()=>start(unitWrong());
+document.getElementById("wrongClear").onclick=()=>{if(confirm("이 단원 오답 기록을 지울까?")){const ids=unitQ().map(q=>q.id);saveWrong(loadWrong().filter(id=>!ids.includes(id)));renderWrong()}};
+
+setUnit(unit);
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 </body>
